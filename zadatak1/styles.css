@@ -18,7 +18,16 @@ h1,form{
     clear: both;
     margin: 30px;
 }
-
+button{
+    background-color: rgb(110, 22, 22);
+    border: rgb(70, 58, 58) 3px solid;
+    color: grey;
+    padding: 5px;
+    transition: background-color 1s;
+}
+button:hover{
+    background-color: rgb(51, 9, 9);
+}
 img{
     width: 50%;
     float: right;
