@@ -48,7 +48,8 @@ rFormElement.addEventListener("submit", function (event){
 
     reviews.push(review);
     renderReview(review);
-    
+
     formData.set("review", "");
     formData.set("rating", "");
+    rFormElement.reset();
 })
