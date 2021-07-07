@@ -1,5 +1,10 @@
 
-reviews = JSON.parse(localStorage.getItem('myArray'));
+if(localStorage.getItem('myArray') === null){
+    console.log("initialise");
+    let array=[{text:"no reviews",rating:3}]
+    localStorage.setItem('myArray', JSON.stringify(array));
+}
+const reviews = JSON.parse(localStorage.getItem('myArray'));
 
 const rListElement = document.querySelector("#review-list");
 const avgElement = document.querySelector("#average");
@@ -54,6 +59,7 @@ function renderAverage(){
 
 renderAverage();
 
+
 for (let i = 0; i < reviews.length; i++) {
     renderReview(reviews[i], i);
 }
@@ -84,9 +90,12 @@ rFormElement.addEventListener("submit", function (event){
 
 function getAvg(){
     let sum=0;
-    for(let i=0; i<reviews.length; i++){
-        sum+=reviews[i].rating;
+    if(reviews !== null){
+        for(let i=0; i<reviews.length; i++){
+            sum+=reviews[i].rating;
+        }
+        if((sum / reviews.length)%1 === 0) return (sum / reviews.length)
+        return (sum / reviews.length).toFixed(2);
     }
-    if((sum / reviews.length)%1 === 0) return (sum / reviews.length)
-    return (sum / reviews.length).toFixed(2);
+    return 0;
 }
