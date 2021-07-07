@@ -14,7 +14,7 @@ let reviews = [
 ]
 
 const rListElement = document.querySelector("#review-list");
-
+const avgElement = document.querySelector("#average");
 const rFormElement = document.querySelector("#review-form");
 
 function renderReview(review) {
@@ -27,6 +27,12 @@ function renderReview(review) {
     listItem.appendChild(ratingli);
     rListElement.appendChild(listItem);
 }
+
+function renderAverage(){
+    avgElement.textContent = getAvg();
+}
+
+renderAverage();
 
 for (let i = 0; i < reviews.length; i++) {
     renderReview(reviews[i]);
@@ -42,14 +48,25 @@ rFormElement.addEventListener("submit", function (event){
 
     const review = {
         text: rText,
-        rating: rRating
+        rating: Number.parseInt(rRating)
     }
     
 
     reviews.push(review);
     renderReview(review);
 
+    renderAverage();
+
     formData.set("review", "");
     formData.set("rating", "");
     rFormElement.reset();
 })
+
+function getAvg(){
+    let sum=0;
+    for(let i=0; i<reviews.length; i++){
+        sum+=reviews[i].rating;
+    }
+    if((sum / reviews.length)%1 === 0) return (sum / reviews.length)
+    return (sum / reviews.length).toFixed(2);
+}
