@@ -17,15 +17,47 @@ const rListElement = document.querySelector("#review-list");
 const avgElement = document.querySelector("#average");
 const rFormElement = document.querySelector("#review-form");
 
-function renderReview(review) {
+function renderReview(review,i) {
     const listItem = document.createElement("li");
     const ratingli = document.createElement("h5");
+    const delButton = document.createElement("button");
   
     listItem.textContent = review.text;
     ratingli.textContent = review.rating;
-  
+    delButton.textContent = "delete review"
+
+    delButton.name=i;
+    
+    delButton.addEventListener("click", function (event){
+        console.log("click");
+
+        let index = Number.parseInt(delButton.name);
+
+        deleteListItem(listItem, index);
+
+    })
+
+    listItem.appendChild(delButton);
     listItem.appendChild(ratingli);
+    
     rListElement.appendChild(listItem);
+}
+
+function deleteListItem(item, index){
+    
+    reviews.splice(index,1);
+
+    item.remove();
+
+    renderAverage();
+    resetIndexes();
+}
+
+function resetIndexes(){
+    let listLI = rListElement.getElementsByTagName("li");
+    for(let i=0;i<listLI.length;i++){
+        listLI[i].getElementsByTagName("button")[0].name = i;
+    }
 }
 
 function renderAverage(){
@@ -35,7 +67,7 @@ function renderAverage(){
 renderAverage();
 
 for (let i = 0; i < reviews.length; i++) {
-    renderReview(reviews[i]);
+    renderReview(reviews[i], i);
 }
 
 rFormElement.addEventListener("submit", function (event){
@@ -51,9 +83,8 @@ rFormElement.addEventListener("submit", function (event){
         rating: Number.parseInt(rRating)
     }
     
-
+    renderReview(review, reviews.length);
     reviews.push(review);
-    renderReview(review);
 
     renderAverage();
 
