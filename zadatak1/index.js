@@ -1,17 +1,5 @@
-let reviews = [
-    {
-        text: "great show, love it",
-        rating: 5
-    },
-    {
-        text: "ok show, I like it",
-        rating: 3
-    },
-    {
-        text: "bad show, hate it",
-        rating: 1
-    }
-]
+
+reviews = JSON.parse(localStorage.getItem('myArray'));
 
 const rListElement = document.querySelector("#review-list");
 const avgElement = document.querySelector("#average");
@@ -29,7 +17,6 @@ function renderReview(review,i) {
     delButton.name=i;
     
     delButton.addEventListener("click", function (event){
-        console.log("click");
 
         let index = Number.parseInt(delButton.name);
 
@@ -49,6 +36,7 @@ function deleteListItem(item, index){
 
     item.remove();
 
+    localStorage.setItem('myArray', JSON.stringify(reviews));
     renderAverage();
     resetIndexes();
 }
@@ -85,6 +73,7 @@ rFormElement.addEventListener("submit", function (event){
     
     renderReview(review, reviews.length);
     reviews.push(review);
+    localStorage.setItem('myArray', JSON.stringify(reviews));
 
     renderAverage();
 
