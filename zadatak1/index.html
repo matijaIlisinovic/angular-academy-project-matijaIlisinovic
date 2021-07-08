@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" media="screen" href="styles.css">
+    </head>
+    <body>
+        <h1 style="text-shadow: 3px 3px 3px rgba(128, 128, 128, 0.37);">Show review</h1>
+        <div class="banner">
+            <h2>Why women kill</h2>
+            <img src="https://uktv-res.cloudinary.com/image/upload/v1598267305/j81nx4xjthtktyulgbzp.jpg" alt="poster">
+            <p>
+                The show follows multiple women going through multiple dramatic events, 
+                some of which are even murderous.<br/><br/>
+                <b><span id="average"></span>/5</b>
+            </p>
+           
+        </div>
+        <form id="review-form">
+            <label name="review">
+                Leave a review: <br/>
+                <input type="textarea" name="review" placeholder="(review)"
+                style="width: 350px;height: 50px;" required><br/><br/>
+            </label>
+            <label name="rating">
+                Rating:<br/>
+                <input type="number" name="rating" min="1" max="5" step="1" placeholder="1-5" required
+                style="width: 40px;height: 15px;"><br/><br/>
+            </label>
+            <button type="submit">POST</button>
+        </form>
+
+        <ul id="review-list"></ul>
+
+        <script src="index.js"></script>
+    </body>
+</html>
