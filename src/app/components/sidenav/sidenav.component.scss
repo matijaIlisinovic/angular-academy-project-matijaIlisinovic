@@ -2,7 +2,11 @@ ul {
 	list-style: none;
 }
 li {
-	background-color: green;
 	margin: 20px auto;
 	width: 60%;
+}
+a {
+	text-decoration: none;
+	color: rgb(182, 73, 127);
+	text-shadow: 1px 1px 1px rgb(131, 131, 91);
 }
