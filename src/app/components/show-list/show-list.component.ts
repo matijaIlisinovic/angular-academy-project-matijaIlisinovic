@@ -1,4 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Show } from 'src/app/services/show.model';
 
 @Component({
 	selector: 'app-show-list',
@@ -7,5 +8,5 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowListComponent {
-	@Input() shows: any[];
+	@Input() shows: Array<Show>;
 }
