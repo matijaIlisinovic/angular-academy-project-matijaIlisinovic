@@ -11,23 +11,6 @@ export class AllShowsContainerComponent {
 	data = [
 		{
 			title: 'review',
-			averageRating: 4,
-			imgUrl: 'https://images.newscientist.com/wp-content/uploads/2021/04/27105841/gettyimages-955480082_web.jpg',
-		},
-		{
-			title: 'review',
-			averageRating: 4,
-			imgUrl: 'https://images.newscientist.com/wp-content/uploads/2021/04/27105841/gettyimages-955480082_web.jpg',
-		},
-		{
-			title: 'review',
-			averageRating: 4,
-			imgUrl: 'https://images.newscientist.com/wp-content/uploads/2021/04/27105841/gettyimages-955480082_web.jpg',
-		},
-	];
-	shows: Array<Show> = [
-		{
-			title: 'review',
 			description: 'description',
 			averageRating: 4,
 			imgUrl: 'https://images.newscientist.com/wp-content/uploads/2021/04/27105841/gettyimages-955480082_web.jpg',
@@ -45,4 +28,11 @@ export class AllShowsContainerComponent {
 			imgUrl: 'https://images.newscientist.com/wp-content/uploads/2021/04/27105841/gettyimages-955480082_web.jpg',
 		},
 	];
+	shows: Array<Show>;
+
+	ngOnInit() {
+		this.shows = this.data.map((showData) => {
+			return new Show(showData);
+		});
+	}
 }
