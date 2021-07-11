@@ -10,4 +10,9 @@ export class Show {
 	description: string;
 	averageRating: number;
 	imgUrl: string;
+
+	getPercentage() {
+		let number = Math.trunc((this.averageRating / 5) * 100);
+		return number + '%';
+	}
 }

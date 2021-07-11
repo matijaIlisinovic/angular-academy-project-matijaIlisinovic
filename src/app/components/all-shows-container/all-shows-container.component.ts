@@ -10,29 +10,45 @@ import { Show } from 'src/app/services/show.model';
 export class AllShowsContainerComponent {
 	data = [
 		{
-			title: 'review',
-			description: 'description',
-			averageRating: 4,
-			imgUrl: 'https://images.newscientist.com/wp-content/uploads/2021/04/27105841/gettyimages-955480082_web.jpg',
+			title: 'Doctor Who',
+			description: 'Time travelly humanity savey person travels around and does silly faces',
+			averageRating: 4.2,
+			imgUrl: 'https://upload.wikimedia.org/wikipedia/en/0/05/Doctor_Who_-_Current_Titlecard.png',
 		},
 		{
-			title: 'review',
-			description: 'description',
-			averageRating: 4,
-			imgUrl: 'https://images.newscientist.com/wp-content/uploads/2021/04/27105841/gettyimages-955480082_web.jpg',
+			title: 'Black Mirror',
+			description: 'What horrors await us as we venture into a new age of technology',
+			averageRating: 4.61,
+			imgUrl: 'https://www.nme.com/wp-content/uploads/2018/12/bm-696x442.png',
 		},
 		{
-			title: 'review',
-			description: 'description',
+			title: 'Sex Education',
+			description: 'A well written teen drama that deals with stereotypical subjects such as weirdness of puberty',
 			averageRating: 4,
-			imgUrl: 'https://images.newscientist.com/wp-content/uploads/2021/04/27105841/gettyimages-955480082_web.jpg',
+			imgUrl:
+				'https://thefilmyseries.com/wp-content/uploads/2021/03/Sex-Education-Season-3-cast-what-to-expect-and-release-date.jpeg',
+		},
+		{
+			title: 'The Big Bang Theory',
+			description:
+				'Can a nerd win over a pretty girl? Find out as you watch weirdly conceptualised characters engage in conversation.',
+			averageRating: 3.3,
+			imgUrl: 'https://www.tvguide.com/a/img/catalog/provider/1/1/1-6482810627.jpg',
+		},
+		{
+			title: 'School Days',
+			description: 'trash',
+			averageRating: 1,
+			imgUrl: 'https://images-na.ssl-images-amazon.com/images/I/91SewQYjB%2BL._SL1500_.jpg',
 		},
 	];
 	shows: Array<Show>;
 
 	ngOnInit() {
 		this.shows = this.data.map((showData) => {
-			return new Show(showData);
+			let a = new Show(showData);
+			console.log(a.getPercentage());
+			return a;
 		});
 	}
 }
