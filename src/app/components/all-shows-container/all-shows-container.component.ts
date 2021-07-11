@@ -18,5 +18,10 @@ export class AllShowsContainerComponent {
 			averageRating: 4,
 			imgUrl: 'https://images.newscientist.com/wp-content/uploads/2021/04/27105841/gettyimages-955480082_web.jpg',
 		},
+		{
+			title: 'review',
+			averageRating: 4,
+			imgUrl: 'https://images.newscientist.com/wp-content/uploads/2021/04/27105841/gettyimages-955480082_web.jpg',
+		},
 	];
 }
