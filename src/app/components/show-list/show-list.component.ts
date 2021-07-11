@@ -1,16 +1,11 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-show-list',
-  templateUrl: './show-list.component.html',
-  styleUrls: ['./show-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+	selector: 'app-show-list',
+	templateUrl: './show-list.component.html',
+	styleUrls: ['./show-list.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ShowListComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class ShowListComponent {
+	@Input() shows: any[];
 }
