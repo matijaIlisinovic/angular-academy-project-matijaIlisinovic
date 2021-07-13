@@ -44,14 +44,17 @@ export class ShowService {
 			imgUrl: 'https://images-na.ssl-images-amazon.com/images/I/91SewQYjB%2BL._SL1500_.jpg',
 		},
 	];
-	getShows(): Array<Show> {
+	public getShows(): Array<Show> {
 		return this.data.map((showData) => {
 			let a = new Show(showData);
 			console.log(a.getPercentage());
 			return a;
 		});
 	}
-	getTopRated(): Array<Show> {
+	public getTopRated(): Array<Show> {
 		return this.getShows().filter((show: Show) => show.averageRating > 4);
+	}
+	public getShow(id: string): Show | undefined {
+		return this.getShows().find((show: Show) => show.id == id);
 	}
 }
