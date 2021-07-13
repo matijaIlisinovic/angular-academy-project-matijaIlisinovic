@@ -2,7 +2,7 @@ export class Show {
 	constructor(data: any) {
 		this.title = data.title;
 		this.description = data.description;
-		this.averageRating = data.averageRating;
+		this.averageRating = data.average_rating;
 		this.imgUrl = data.imgUrl;
 	}
 

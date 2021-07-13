@@ -12,6 +12,7 @@ import { AllShowsContainerComponent } from './components/all-shows-container/all
 import { ShowListComponent } from './components/show-list/show-list.component';
 import { ShowCardComponent } from './components/show-card/show-card.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,7 @@ import { RatingComponent } from './components/rating/rating.component';
 		ShowCardComponent,
 		RatingComponent,
 	],
-	imports: [BrowserModule, BrowserAnimationsModule, MatCardModule, MatSidenavModule, MatIconModule],
+	imports: [BrowserModule, BrowserAnimationsModule, MatCardModule, MatSidenavModule, MatIconModule, AppRoutingModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })
