@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { IShowData } from '../interfaces/showData.interface';
 import { Show } from './show.model';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class ShowService {
-	private data = [
+	private data: Array<IShowData> = [
 		{
 			title: 'Doctor Who',
 			id: '1',
@@ -45,7 +46,7 @@ export class ShowService {
 		},
 	];
 	public getShows(): Array<Show> {
-		return this.data.map((showData) => {
+		return this.data.map((showData: IShowData) => {
 			let a = new Show(showData);
 			console.log(a.getPercentage());
 			return a;
