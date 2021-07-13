@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { AllShowsContainerComponent } from './components/all-shows-container/all-shows-container.component';
+import { AllShowsContainerComponent } from './pages/all-shows-container/all-shows-container.component';
 import { ShowListComponent } from './components/show-list/show-list.component';
 import { ShowCardComponent } from './components/show-card/show-card.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TopRatedShowsContainerComponent } from './pages/top-rated-shows-container/top-rated-shows-container.component';
+import { ShowDetailsContainerComponent } from './pages/show-details-container/show-details-container.component';
 
 @NgModule({
 	declarations: [
@@ -23,6 +25,8 @@ import { AppRoutingModule } from './app-routing.module';
 		ShowListComponent,
 		ShowCardComponent,
 		RatingComponent,
+  TopRatedShowsContainerComponent,
+  ShowDetailsContainerComponent,
 	],
 	imports: [BrowserModule, BrowserAnimationsModule, MatCardModule, MatSidenavModule, MatIconModule, AppRoutingModule],
 	providers: [],
