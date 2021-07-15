@@ -56,6 +56,6 @@ export class ShowService {
 		return this.getShows().filter((show: Show) => show.averageRating > 4);
 	}
 	public getShow(id: string): Show | undefined {
-		return this.getShows().find((show: Show) => show.id == id);
+		return this.getShows().find((show: Show) => show.id === id);
 	}
 }

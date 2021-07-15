@@ -10,7 +10,7 @@ import { ShowService } from 'src/app/services/show.service';
 })
 export class AllShowsContainerComponent {
 	constructor(private showService: ShowService) {}
-	shows: Array<Show>;
+	public shows: Array<Show>;
 
 	ngOnInit() {
 		this.shows = this.showService.getShows();
