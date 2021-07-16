@@ -9,4 +9,9 @@ a {
 	text-decoration: none;
 	color: rgb(182, 73, 127);
 	text-shadow: 1px 1px 1px rgb(131, 131, 91);
+	padding: 10px 20px;
+	border-radius: 10px;
+}
+.active {
+	background-color: rgba(172, 255, 47, 0.061);
 }

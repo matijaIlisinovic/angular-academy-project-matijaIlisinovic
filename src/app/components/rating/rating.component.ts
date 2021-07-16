@@ -10,7 +10,7 @@ import { getMatIconNoHttpProviderError } from '@angular/material/icon';
 export class RatingComponent {
 	@Input() averageRating: number;
 
-	starFunction() {
+	public starFunction(): string {
 		let starString = '';
 		for (let i = 0; i < this.averageRating - 0.5; i++) {
 			starString = starString.concat(' star');
