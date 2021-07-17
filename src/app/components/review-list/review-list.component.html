@@ -1,3 +1,7 @@
 <ng-container *ngFor="let review of reviews">
 	<app-review-card [review]="review"> </app-review-card>
 </ng-container>
+
+<ng-container *ngIf="reviews.length <= 0">
+	<p style="background-color: blueviolet; color: chartreuse">No Reviews</p>
+</ng-container>

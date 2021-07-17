@@ -9,27 +9,27 @@ export class ReviewsService {
 	private data: Array<IReview> = [
 		{
 			showId: '1',
-			text: 'good show',
+			comment: 'good show',
 			rating: 4,
 		},
 		{
 			showId: '1',
-			text: 'good show',
+			comment: 'good show',
 			rating: 3,
 		},
 		{
 			showId: '1',
-			text: 'good show',
+			comment: 'good show',
 			rating: 5,
 		},
 		{
 			showId: '2',
-			text: 'good show',
+			comment: 'good show',
 			rating: 3,
 		},
 		{
 			showId: '4',
-			text: 'good show',
+			comment: 'good show',
 			rating: 3,
 		},
 	];

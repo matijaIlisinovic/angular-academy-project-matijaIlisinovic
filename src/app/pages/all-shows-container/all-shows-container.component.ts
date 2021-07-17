@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Show } from 'src/app/services/show.model';
 import { ShowService } from 'src/app/services/show.service';
 
@@ -10,9 +11,6 @@ import { ShowService } from 'src/app/services/show.service';
 })
 export class AllShowsContainerComponent {
 	constructor(private showService: ShowService) {}
-	public shows: Array<Show>;
 
-	ngOnInit() {
-		this.shows = this.showService.getShows();
-	}
+	public shows$: Observable<Array<Show>> = this.showService.getShows();
 }
