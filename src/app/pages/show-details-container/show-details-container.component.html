@@ -1,5 +1,6 @@
-<ng-container *ngIf="show$ | async as show">
-	<ng-container *ngIf="reviews$ | async as reviews">
+<ng-container *ngIf="show$ | async as show; else loading">
+	<ng-container *ngIf="reviews$ | async as reviews; else loading">
 		<app-show-details [show]="show" [reviews]="reviews"></app-show-details>
 	</ng-container>
 </ng-container>
+<ng-template #loading><mat-spinner [color]="'accent'"></mat-spinner></ng-template>
