@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { delay, map } from 'rxjs/internal/operators';
 import { IReview } from '../interfaces/review.interface';
 import { Review } from './review.model';
 
@@ -34,13 +36,25 @@ export class ReviewsService {
 		},
 	];
 
-	public getReviews(id: string): Array<Review> {
-		console.log('catching reviews');
-		return this.data
-			.filter((rData: IReview) => rData.showId === id)
-			.map((rData: IReview) => {
-				let a = new Review(rData);
-				return a;
-			});
+	private get reviews(): Array<Review> {
+		return this.data.map((rData: IReview) => {
+			let a = new Review(rData);
+			return a;
+		});
 	}
+	public getReviews(id: string | null): Observable<Array<Review>> {
+		console.log('catching reviews');
+		return of(this.reviews)
+			.pipe(delay(Math.random() * 1000 + 1000))
+			.pipe(map((reviews) => reviews.filter((review: Review) => review.showId === id)));
+	}
+	/*public getShows(): Observable<Array<Show>> {
+		return of(this.shows).pipe(delay(Math.random() * 1000 + 1000));
+	}
+	public getTopRated(): Observable<Array<Show>> {
+		return this.getShows().pipe(map((shows) => shows.filter((show: Show) => show.averageRating > 4)));
+	}
+	public getShow(id: string): Observable<Show | null> {
+		return this.getShows().pipe(map((shows) => shows.find((show: Show) => show.id === id) || null));
+	} */
 }

@@ -1,3 +1,5 @@
 <ng-container *ngIf="show$ | async as show">
-	<app-show-details [show]="show" [reviews]="reviews"></app-show-details>
+	<ng-container *ngIf="reviews$ | async as reviews">
+		<app-show-details [show]="show" [reviews]="reviews"></app-show-details>
+	</ng-container>
 </ng-container>
