@@ -1,4 +1,4 @@
 <ng-container *ngIf="shows$ | async as shows; else loading">
 	<app-show-list [shows]="shows"></app-show-list>
 </ng-container>
-<ng-template #loading><mat-spinner [color]="'accent'"></mat-spinner></ng-template>
+<ng-template #loading><app-loading-spinner></app-loading-spinner></ng-template>

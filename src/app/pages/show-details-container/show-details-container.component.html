@@ -3,4 +3,7 @@
 		<app-show-details [show]="show" [reviews]="reviews"></app-show-details>
 	</ng-container>
 </ng-container>
-<ng-template #loading><mat-spinner [color]="'accent'"></mat-spinner></ng-template>
+<ng-template #loading>
+	<app-loading-spinner></app-loading-spinner>
+</ng-template>
+<h5 style="font-size: 50px; color: crimson; margin-top: 50px">{{ errorDisplay }}</h5>
