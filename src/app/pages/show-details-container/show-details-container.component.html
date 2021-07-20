@@ -1,10 +1,10 @@
 <ng-container *ngIf="show$ | async as show; else loading">
 	<ng-container *ngIf="reviews$ | async as reviews; else loading">
-		<app-show-details [show]="show" [reviews]="reviews"></app-show-details>
+		<app-show-details [show]="show"></app-show-details>
 		<app-review-list [reviews]="reviews"></app-review-list>
 	</ng-container>
 </ng-container>
 <ng-template #loading>
-	<app-loading-spinner></app-loading-spinner>
+	<app-loading-spinner [style.display]="isVisible"></app-loading-spinner>
 </ng-template>
 <h5 style="font-size: 50px; color: crimson; margin-top: 50px">{{ errorDisplay }}</h5>

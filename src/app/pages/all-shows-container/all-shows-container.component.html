@@ -1,4 +1,5 @@
 <ng-container *ngIf="shows$ | async as shows; else loading">
 	<app-show-list [shows]="shows"></app-show-list>
 </ng-container>
-<ng-template #loading><app-loading-spinner></app-loading-spinner></ng-template>
+<ng-template #loading><app-loading-spinner [style.display]="isVisible"></app-loading-spinner></ng-template>
+<h5 style="font-size: 50px; color: crimson; margin-top: 50px">{{ errorDisplay }}</h5>

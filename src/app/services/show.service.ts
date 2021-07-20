@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { IShowData } from '../interfaces/showData.interface';
 import { Show } from './show.model';
 import { delay, map } from 'rxjs/internal/operators';
@@ -49,6 +49,9 @@ export class ShowService {
 	];
 
 	private get shows(): Array<Show> {
+		if (Math.random() < 0.1) {
+			throw 'Unable to fetch shows';
+		}
 		return this.data.map((showData: IShowData) => {
 			let a = new Show(showData);
 			return a;

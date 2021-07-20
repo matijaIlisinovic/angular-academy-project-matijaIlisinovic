@@ -19,6 +19,7 @@ import { ShowDetailsComponent } from './components/show-details/show-details.com
 import { ReviewListComponent } from './components/review-list/review-list.component';
 import { ReviewCardComponent } from './components/review-card/review-card.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
 	declarations: [
@@ -34,6 +35,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 		ShowDetailsComponent,
 		ReviewListComponent,
 		ReviewCardComponent,
+  LoadingSpinnerComponent,
 	],
 	imports: [
 		BrowserModule,

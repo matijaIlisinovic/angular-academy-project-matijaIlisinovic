@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Review } from 'src/app/services/review.model';
 import { Show } from 'src/app/services/show.model';
 
 @Component({
@@ -10,5 +9,4 @@ import { Show } from 'src/app/services/show.model';
 })
 export class ShowDetailsComponent {
 	@Input() show: Show;
-	@Input() reviews: Array<Review>;
 }

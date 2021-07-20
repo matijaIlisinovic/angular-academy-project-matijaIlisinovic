@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Show } from 'src/app/services/show.model';
 import { ShowService } from 'src/app/services/show.service';
 
@@ -11,5 +11,16 @@ import { ShowService } from 'src/app/services/show.service';
 })
 export class TopRatedShowsContainerComponent {
 	constructor(private showService: ShowService) {}
-	public shows$: Observable<Array<Show>> = this.showService.getTopRated();
+	private fetchShows(): Observable<Show[]> {
+		try {
+			return this.showService.getTopRated();
+		} catch (error) {
+			this.errorDisplay = error;
+			this.isVisible = 'none';
+			return of([]);
+		}
+	}
+	public errorDisplay: string = '';
+	public isVisible: string = 'block';
+	public shows$: Observable<Array<Show>> = this.fetchShows();
 }

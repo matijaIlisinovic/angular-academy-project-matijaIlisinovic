@@ -42,12 +42,11 @@ export class ReviewsService {
 	];
 
 	private get reviews(): Array<Review> {
-		if (Math.random() < 0) {
-			throw 'b';
+		if (Math.random() < 0.1) {
+			throw 'Unable to fetch reviews';
 		}
 		return this.data.map((rData: IReview) => {
-			let a = new Review(rData);
-			return a;
+			return new Review(rData);
 		});
 	}
 	public getReviews(id: string | null): Observable<Array<Review>> {
