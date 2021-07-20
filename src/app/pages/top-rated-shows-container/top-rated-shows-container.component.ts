@@ -10,10 +10,10 @@ import { ShowService } from 'src/app/services/show.service';
 	styleUrls: ['./top-rated-shows-container.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TopRatedShowsContainerComponent {
+export class TopRatedShowsContainerComponent implements OnInit {
 	constructor(private showService: ShowService) {}
-	private fetchShows(): Observable<Show[]> {
-		return this.showService.getTopRated().pipe(
+	ngOnInit(): void {
+		this.shows$ = this.showService.getTopRated().pipe(
 			retry(1),
 			catchError((error) => {
 				this.errorDisplay = error;
@@ -22,7 +22,8 @@ export class TopRatedShowsContainerComponent {
 			})
 		);
 	}
+
 	public errorDisplay: string = '';
 	public isVisible: string = 'block';
-	public shows$: Observable<Array<Show>> = this.fetchShows();
+	public shows$: Observable<Array<Show>>;
 }

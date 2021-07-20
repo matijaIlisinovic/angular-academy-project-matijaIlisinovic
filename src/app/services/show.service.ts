@@ -49,17 +49,21 @@ export class ShowService {
 	];
 
 	private get shows(): Array<Show> {
-		if (Math.random() < 0.9) {
-			throw 'Unable to fetch shows';
-		}
 		return this.data.map((showData: IShowData) => {
-			let a = new Show(showData);
-			return a;
+			return new Show(showData);
 		});
 	}
 
 	public getShows(): Observable<Array<Show>> {
-		return of(this.shows).pipe(delay(Math.random() * 1000 + 1000));
+		return of(this.shows).pipe(
+			map((a) => {
+				if (Math.random() < 0.1) {
+					throw 'Unable to load shows';
+				}
+				return a;
+			}),
+			delay(Math.random() * 1000 + 1000)
+		);
 	}
 	public getTopRated(): Observable<Array<Show>> {
 		return this.getShows().pipe(map((shows) => shows.filter((show: Show) => show.averageRating > 4)));
