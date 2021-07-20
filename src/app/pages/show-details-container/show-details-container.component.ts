@@ -21,16 +21,14 @@ export class ShowDetailsContainerComponent implements OnInit {
 	public errorDisplay: string = '';
 
 	ngOnInit(): void {
-		combineLatest([this.fetchShowFn(), this.fetchReviewsFn()])
-			.pipe(
-				retry(1),
-				catchError((error) => {
-					this.isVisible = 'none';
-					this.errorDisplay = error;
-					return of(error);
-				})
-			)
-			.subscribe();
+		combineLatest([this.fetchShowFn(), this.fetchReviewsFn()]).pipe(
+			retry(1),
+			catchError((error) => {
+				this.isVisible = 'none';
+				this.errorDisplay = error;
+				return of(error);
+			})
+		);
 	}
 
 	private fetchShowFn(): Observable<Show | null> {
@@ -54,9 +52,5 @@ export class ShowDetailsContainerComponent implements OnInit {
 				return of([]);
 			})
 		);
-	}
-	private async initialiseData() {
-		this.show$ = this.fetchShowFn();
-		this.reviews$ = this.fetchReviewsFn();
 	}
 }
