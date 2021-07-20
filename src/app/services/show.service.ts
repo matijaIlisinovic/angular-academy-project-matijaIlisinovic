@@ -49,7 +49,7 @@ export class ShowService {
 	];
 
 	private get shows(): Array<Show> {
-		if (Math.random() < 0.1) {
+		if (Math.random() < 0.9) {
 			throw 'Unable to fetch shows';
 		}
 		return this.data.map((showData: IShowData) => {

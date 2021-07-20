@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { catchError, retry } from 'rxjs/internal/operators';
 import { Show } from 'src/app/services/show.model';
 import { ShowService } from 'src/app/services/show.service';
 
@@ -12,13 +13,14 @@ import { ShowService } from 'src/app/services/show.service';
 export class TopRatedShowsContainerComponent {
 	constructor(private showService: ShowService) {}
 	private fetchShows(): Observable<Show[]> {
-		try {
-			return this.showService.getTopRated();
-		} catch (error) {
-			this.errorDisplay = error;
-			this.isVisible = 'none';
-			return of([]);
-		}
+		return this.showService.getTopRated().pipe(
+			retry(1),
+			catchError((error) => {
+				this.errorDisplay = error;
+				this.isVisible = 'none';
+				return of([]);
+			})
+		);
 	}
 	public errorDisplay: string = '';
 	public isVisible: string = 'block';

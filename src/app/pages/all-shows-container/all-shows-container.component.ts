@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { catchError, retry } from 'rxjs/internal/operators';
 import { Show } from 'src/app/services/show.model';
 import { ShowService } from 'src/app/services/show.service';
 
@@ -10,14 +11,15 @@ import { ShowService } from 'src/app/services/show.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllShowsContainerComponent {
-	fetchShows(): Observable<Show[]> {
-		try {
-			return this.showService.getShows();
-		} catch (error) {
-			this.errorDisplay = error;
-			this.isVisible = 'none';
-			return of([]);
-		}
+	private fetchShows(): Observable<Show[]> {
+		return this.showService.getShows().pipe(
+			retry(1),
+			catchError((error) => {
+				this.errorDisplay = error;
+				this.isVisible = 'none';
+				return of([]);
+			})
+		);
 	}
 	public errorDisplay: string;
 	public isVisible: string = 'block';
