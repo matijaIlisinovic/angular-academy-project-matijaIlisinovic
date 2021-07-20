@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Observable, of, throwError } from 'rxjs';
 import { IShowData } from '../interfaces/showData.interface';
 import { Show } from './show.model';
+import { delay, map } from 'rxjs/internal/operators';
 
 @Injectable({
 	providedIn: 'root',
@@ -45,17 +47,28 @@ export class ShowService {
 			imgUrl: 'https://images-na.ssl-images-amazon.com/images/I/91SewQYjB%2BL._SL1500_.jpg',
 		},
 	];
-	public getShows(): Array<Show> {
+
+	private get shows(): Array<Show> {
 		return this.data.map((showData: IShowData) => {
-			let a = new Show(showData);
-			console.log(a.getPercentage());
-			return a;
+			return new Show(showData);
 		});
 	}
-	public getTopRated(): Array<Show> {
-		return this.getShows().filter((show: Show) => show.averageRating > 4);
+
+	public getShows(): Observable<Array<Show>> {
+		return of(this.shows).pipe(
+			map((a) => {
+				if (Math.random() < 0.1) {
+					throw 'Unable to load shows';
+				}
+				return a;
+			}),
+			delay(Math.random() * 1000 + 1000)
+		);
 	}
-	public getShow(id: string): Show | undefined {
-		return this.getShows().find((show: Show) => show.id === id);
+	public getTopRated(): Observable<Array<Show>> {
+		return this.getShows().pipe(map((shows) => shows.filter((show: Show) => show.averageRating > 4)));
+	}
+	public getShow(id: string): Observable<Show | null> {
+		return this.getShows().pipe(map((shows) => shows.find((show: Show) => show.id === id) || null));
 	}
 }

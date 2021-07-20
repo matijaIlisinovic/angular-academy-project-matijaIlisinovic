@@ -1,3 +1,13 @@
-<ng-container *ngIf="show">
-	<app-show-details [show]="show"></app-show-details>
+<ng-container *ngIf="templateData$ | async as template; else loading">
+	<ng-container *ngIf="template.show as show">
+		<app-show-details [show]="show"></app-show-details>
+	</ng-container>
+	<ng-container *ngIf="template.reviews as reviews">
+		<app-review-list [reviews]="reviews"></app-review-list>
+	</ng-container>
 </ng-container>
+
+<ng-template #loading>
+	<app-loading-spinner [style.display]="isVisible"></app-loading-spinner>
+</ng-template>
+<h5 style="font-size: 50px; color: crimson; margin-top: 50px">{{ errorDisplay }}</h5>

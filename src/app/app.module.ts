@@ -16,6 +16,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { TopRatedShowsContainerComponent } from './pages/top-rated-shows-container/top-rated-shows-container.component';
 import { ShowDetailsContainerComponent } from './pages/show-details-container/show-details-container.component';
 import { ShowDetailsComponent } from './components/show-details/show-details.component';
+import { ReviewListComponent } from './components/review-list/review-list.component';
+import { ReviewCardComponent } from './components/review-card/review-card.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
 	declarations: [
@@ -26,11 +30,22 @@ import { ShowDetailsComponent } from './components/show-details/show-details.com
 		ShowListComponent,
 		ShowCardComponent,
 		RatingComponent,
-  TopRatedShowsContainerComponent,
-  ShowDetailsContainerComponent,
-  ShowDetailsComponent,
+		TopRatedShowsContainerComponent,
+		ShowDetailsContainerComponent,
+		ShowDetailsComponent,
+		ReviewListComponent,
+		ReviewCardComponent,
+  LoadingSpinnerComponent,
 	],
-	imports: [BrowserModule, BrowserAnimationsModule, MatCardModule, MatSidenavModule, MatIconModule, AppRoutingModule],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		MatCardModule,
+		MatSidenavModule,
+		MatIconModule,
+		AppRoutingModule,
+		MatProgressSpinnerModule,
+	],
 	providers: [],
 	bootstrap: [AppComponent],
 })
