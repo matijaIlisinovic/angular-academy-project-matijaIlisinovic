@@ -5,9 +5,8 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { TopRatedShowsContainerComponent } from './pages/top-rated-shows-container/top-rated-shows-container.component';
 import { ShowDetailsContainerComponent } from './pages/show-details-container/show-details-container.component';
 import { FormLayoutComponent } from './components/form-layout/form-layout.component';
-import { LoginRegistrationContainerComponent } from './pages/login-registration-container/login-registration-container.component';
-import { LoginFormComponent } from './pages/login-registration-container/login-form/login-form.component';
-import { RegistrationFormComponent } from './pages/login-registration-container/registration-form/registration-form.component';
+import { LoginContainerComponent } from './pages/login-container/login-container.component';
+import { RegistrationContainerComponent } from './pages/registration-container/registration-container.component';
 
 const routes: Routes = [
 	{
@@ -32,14 +31,8 @@ const routes: Routes = [
 		path: '',
 		component: FormLayoutComponent,
 		children: [
-			{
-				path: '',
-				component: LoginRegistrationContainerComponent,
-				children: [
-					{ path: 'login', component: LoginFormComponent },
-					{ path: 'registration', component: RegistrationFormComponent },
-				],
-			},
+			{ path: 'login', component: LoginContainerComponent },
+			{ path: 'registration', component: RegistrationContainerComponent },
 		],
 	},
 	{

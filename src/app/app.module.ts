@@ -21,12 +21,14 @@ import { ReviewCardComponent } from './components/review-card/review-card.compon
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { FormLayoutComponent } from './components/form-layout/form-layout.component';
-import { LoginRegistrationContainerComponent } from './pages/login-registration-container/login-registration-container.component';
-import { LoginFormComponent } from './pages/login-registration-container/login-form/login-form.component';
-import { RegistrationFormComponent } from './pages/login-registration-container/registration-form/registration-form.component';
+import { LoginFormComponent } from './pages/login-container/login-form/login-form.component';
+import { RegistrationFormComponent } from './pages/registration-container/registration-form/registration-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { LoginContainerComponent } from './pages/login-container/login-container.component';
+import { RegistrationContainerComponent } from './pages/registration-container/registration-container.component';
 
 @NgModule({
 	declarations: [
@@ -44,9 +46,10 @@ import { MatInputModule } from '@angular/material/input';
 		ReviewCardComponent,
 		LoadingSpinnerComponent,
 		FormLayoutComponent,
-		LoginRegistrationContainerComponent,
 		LoginFormComponent,
 		RegistrationFormComponent,
+		LoginContainerComponent,
+		RegistrationContainerComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -59,6 +62,7 @@ import { MatInputModule } from '@angular/material/input';
 		MatFormFieldModule,
 		ReactiveFormsModule,
 		MatInputModule,
+		MatButtonModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],
