@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
 
 @Component({
 	selector: 'app-registration-form',
