@@ -1,16 +1,18 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-registration-form',
-  templateUrl: './registration-form.component.html',
-  styleUrls: ['./registration-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+	selector: 'app-registration-form',
+	templateUrl: './registration-form.component.html',
+	styleUrls: ['./registration-form.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RegistrationFormComponent implements OnInit {
+export class RegistrationFormComponent {
+	constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	public registrationFormGroup: FormGroup = new FormGroup({
+		email: new FormControl('', [Validators.required]),
+		password: new FormControl('', [Validators.required]),
+		repassword: new FormControl('', [Validators.required]),
+	});
 }

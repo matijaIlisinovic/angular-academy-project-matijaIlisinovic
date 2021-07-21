@@ -1,1 +1,19 @@
-<p>registration-form works!</p>
+<mat-card>
+	<form [formGroup]="registrationFormGroup">
+		<mat-form-field appearance="fill">
+			<mat-label>email</mat-label>
+			<input matInput placeholder="ex. Jake" formControlName="email" />
+			<mat-icon matSuffix>mail</mat-icon>
+		</mat-form-field>
+		<mat-form-field appearance="fill">
+			<mat-label>Password</mat-label>
+			<input matInput placeholder="ex. *********" formControlName="password" />
+			<mat-icon matSuffix>window</mat-icon>
+		</mat-form-field>
+		<mat-form-field appearance="fill">
+			<mat-label>Confirm password</mat-label>
+			<input matInput placeholder="ex. *********" formControlName="repassword" />
+			<mat-icon matSuffix>window</mat-icon>
+		</mat-form-field>
+	</form>
+</mat-card>

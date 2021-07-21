@@ -24,6 +24,9 @@ import { FormLayoutComponent } from './components/form-layout/form-layout.compon
 import { LoginRegistrationContainerComponent } from './pages/login-registration-container/login-registration-container.component';
 import { LoginFormComponent } from './pages/login-registration-container/login-form/login-form.component';
 import { RegistrationFormComponent } from './pages/login-registration-container/registration-form/registration-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
 	declarations: [
@@ -39,11 +42,11 @@ import { RegistrationFormComponent } from './pages/login-registration-container/
 		ShowDetailsComponent,
 		ReviewListComponent,
 		ReviewCardComponent,
-  LoadingSpinnerComponent,
-  FormLayoutComponent,
-  LoginRegistrationContainerComponent,
-  LoginFormComponent,
-  RegistrationFormComponent,
+		LoadingSpinnerComponent,
+		FormLayoutComponent,
+		LoginRegistrationContainerComponent,
+		LoginFormComponent,
+		RegistrationFormComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -53,6 +56,9 @@ import { RegistrationFormComponent } from './pages/login-registration-container/
 		MatIconModule,
 		AppRoutingModule,
 		MatProgressSpinnerModule,
+		MatFormFieldModule,
+		ReactiveFormsModule,
+		MatInputModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

@@ -1,1 +1,18 @@
-<p>login-form works!</p>
+<mat-card>
+	<form [formGroup]="loginFormGroup">
+		<mat-form-field appearance="fill">
+			<mat-label>email</mat-label>
+			<input matInput placeholder="ex. Jake" formControlName="email" />
+			<mat-icon matSuffix>mail</mat-icon>
+		</mat-form-field>
+		<mat-form-field appearance="fill">
+			<mat-label>Password</mat-label>
+			<input matInput placeholder="ex. *********" formControlName="password" />
+			<mat-icon matSuffix>window</mat-icon>
+		</mat-form-field>
+	</form>
+	<p>
+		Don't have an account?
+		<a routerLink="/registration">Register</a>
+	</p>
+</mat-card>
