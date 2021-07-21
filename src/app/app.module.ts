@@ -20,6 +20,10 @@ import { ReviewListComponent } from './components/review-list/review-list.compon
 import { ReviewCardComponent } from './components/review-card/review-card.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { FormLayoutComponent } from './components/form-layout/form-layout.component';
+import { LoginRegistrationContainerComponent } from './pages/login-registration-container/login-registration-container.component';
+import { LoginFormComponent } from './pages/login-registration-container/login-form/login-form.component';
+import { RegistrationFormComponent } from './pages/login-registration-container/registration-form/registration-form.component';
 
 @NgModule({
 	declarations: [
@@ -36,6 +40,10 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 		ReviewListComponent,
 		ReviewCardComponent,
   LoadingSpinnerComponent,
+  FormLayoutComponent,
+  LoginRegistrationContainerComponent,
+  LoginFormComponent,
+  RegistrationFormComponent,
 	],
 	imports: [
 		BrowserModule,
