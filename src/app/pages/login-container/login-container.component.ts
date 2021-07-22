@@ -1,6 +1,8 @@
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { of, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { catchError, finalize } from 'rxjs/internal/operators';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LoginData } from './login-form/login-form.component';
@@ -12,7 +14,7 @@ import { LoginData } from './login-form/login-form.component';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginContainerComponent {
-	constructor(private auth: AuthentificationService, private router: Router) {}
+	constructor(private auth: AuthentificationService, private router: Router, private snack: MatSnackBar) {}
 	public isLoading$: Subject<boolean> = new Subject<boolean>();
 
 	public onLogin(loginData: LoginData): void {
@@ -25,12 +27,16 @@ export class LoginContainerComponent {
 				}),
 				catchError((e) => {
 					console.log(e);
+					this.snack.open('invalid password', 'ok');
+					this.router.navigate(['/login']);
 					return of('');
 				})
 			)
 			.subscribe((response) => {
 				console.log(response);
-				this.router.navigate(['']);
+				if (response) {
+					this.router.navigate(['']);
+				}
 			});
 	}
 }
