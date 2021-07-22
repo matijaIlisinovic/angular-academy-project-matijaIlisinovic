@@ -1,4 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
+import { of } from 'rxjs';
+import { catchError } from 'rxjs/internal/operators';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LoginData } from './login-form/login-form.component';
 
 @Component({
@@ -7,11 +11,21 @@ import { LoginData } from './login-form/login-form.component';
 	styleUrls: ['./login-container.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginContainerComponent implements OnInit {
-	constructor() {}
+export class LoginContainerComponent {
+	constructor(private auth: AuthentificationService, private router: Router) {}
 
-	ngOnInit(): void {}
 	public onLogin(loginData: LoginData): void {
-		console.log(loginData);
+		this.auth
+			.signIn(loginData)
+			.pipe(
+				catchError((e) => {
+					console.log(e);
+					return of('');
+				})
+			)
+			.subscribe((response) => {
+				console.log(response);
+				this.router.navigate(['']);
+			});
 	}
 }
