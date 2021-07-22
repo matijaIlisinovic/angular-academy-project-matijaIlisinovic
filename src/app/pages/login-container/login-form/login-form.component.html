@@ -9,7 +9,7 @@
 		</mat-form-field>
 		<mat-form-field appearance="outline">
 			<mat-label>Password</mat-label>
-			<input matInput placeholder="8 characters min" formControlName="password" />
+			<input matInput placeholder="8 characters min" formControlName="password" type="password" />
 			<mat-icon matPrefix>lock</mat-icon>
 		</mat-form-field>
 		<button mat-raised-button (click)="onLogin()" [disabled]="loginFormGroup.invalid">Log in</button>

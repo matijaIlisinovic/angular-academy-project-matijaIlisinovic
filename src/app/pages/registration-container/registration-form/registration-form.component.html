@@ -7,15 +7,15 @@
 		</mat-form-field>
 		<mat-form-field appearance="outline">
 			<mat-label>Password</mat-label>
-			<input matInput placeholder="ex. *********" formControlName="password" />
+			<input matInput placeholder="ex. *********" formControlName="password" type="password" />
 			<mat-icon matPrefix>lock</mat-icon>
 		</mat-form-field>
 		<mat-form-field appearance="outline">
 			<mat-label>Confirm password</mat-label>
-			<input matInput placeholder="ex. *********" formControlName="repassword" />
+			<input matInput placeholder="ex. *********" formControlName="password_confirmation" type="password" />
 			<mat-icon matPrefix>lock</mat-icon>
 		</mat-form-field>
-		<button mat-raised-button>Register</button>
+		<button mat-raised-button (click)="onRegistration()" [disabled]="registrationFormGroup.invalid">Register</button>
 	</form>
 	<p>
 		Already have an account?

@@ -1,7 +1,12 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatButton } from '@angular/material/button';
+import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { geoValidator } from 'src/app/validators/geo-restriction.validator';
 
+export interface RegistrationData {
+	email: string;
+	password: string;
+	password_confirmation: string;
+}
 @Component({
 	selector: 'app-registration-form',
 	templateUrl: './registration-form.component.html',
@@ -9,11 +14,17 @@ import { MatButton } from '@angular/material/button';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegistrationFormComponent {
-	constructor() {}
+	constructor(private fb: FormBuilder) {}
+	@Output() register: EventEmitter<RegistrationData> = new EventEmitter();
 
-	public registrationFormGroup: FormGroup = new FormGroup({
-		email: new FormControl('', [Validators.required]),
-		password: new FormControl('', [Validators.required]),
-		repassword: new FormControl('', [Validators.required]),
+	public registrationFormGroup: FormGroup = this.fb.group({
+		email: ['', [Validators.required, Validators.email, geoValidator]],
+		password: ['', [Validators.required, Validators.minLength(8)]],
+		password_confirmation: ['', [Validators.required, Validators.minLength(8)]],
 	});
+
+	public onRegistration(): void {
+		this.register.emit(this.registrationFormGroup.value);
+		this.registrationFormGroup.reset();
+	}
 }

@@ -29,6 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginContainerComponent } from './pages/login-container/login-container.component';
 import { RegistrationContainerComponent } from './pages/registration-container/registration-container.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
 	declarations: [
@@ -63,6 +64,7 @@ import { RegistrationContainerComponent } from './pages/registration-container/r
 		ReactiveFormsModule,
 		MatInputModule,
 		MatButtonModule,
+		HttpClientModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

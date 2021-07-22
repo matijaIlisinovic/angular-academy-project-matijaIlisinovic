@@ -1,4 +1,4 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { geoValidator } from 'src/app/validators/geo-restriction.validator';
 
@@ -14,12 +14,12 @@ export interface LoginData {
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormComponent {
-	constructor() {}
+	constructor(private fb: FormBuilder) {}
 	@Output() logIn: EventEmitter<LoginData> = new EventEmitter();
 
-	public loginFormGroup: FormGroup = new FormGroup({
-		email: new FormControl('', [Validators.required, Validators.email, geoValidator]),
-		password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+	public loginFormGroup: FormGroup = this.fb.group({
+		email: ['', [Validators.required, Validators.email, geoValidator]],
+		password: ['', [Validators.required, Validators.minLength(8)]],
 	});
 
 	public onLogin(): void {
