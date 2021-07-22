@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
-import { catchError } from 'rxjs/internal/operators';
+import { of, Subject } from 'rxjs';
+import { catchError, finalize } from 'rxjs/internal/operators';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LoginData } from './login-form/login-form.component';
 
@@ -13,11 +13,16 @@ import { LoginData } from './login-form/login-form.component';
 })
 export class LoginContainerComponent {
 	constructor(private auth: AuthentificationService, private router: Router) {}
+	public isLoading$: Subject<boolean> = new Subject<boolean>();
 
 	public onLogin(loginData: LoginData): void {
+		this.isLoading$.next(true);
 		this.auth
 			.signIn(loginData)
 			.pipe(
+				finalize(() => {
+					this.isLoading$.next(false);
+				}),
 				catchError((e) => {
 					console.log(e);
 					return of('');

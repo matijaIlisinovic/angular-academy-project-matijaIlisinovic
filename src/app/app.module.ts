@@ -30,6 +30,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { LoginContainerComponent } from './pages/login-container/login-container.component';
 import { RegistrationContainerComponent } from './pages/registration-container/registration-container.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
 	declarations: [
@@ -65,6 +66,7 @@ import { HttpClientModule } from '@angular/common/http';
 		MatInputModule,
 		MatButtonModule,
 		HttpClientModule,
+		MatProgressBarModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { geoValidator } from 'src/app/validators/geo-restriction.validator';
 
 export interface RegistrationData {
@@ -22,6 +22,16 @@ export class RegistrationFormComponent {
 		password: ['', [Validators.required, Validators.minLength(8)]],
 		password_confirmation: ['', [Validators.required, Validators.minLength(8)]],
 	});
+
+	private checkPassword(): ValidationErrors | null {
+		if (
+			this.registrationFormGroup.get('password')?.value ===
+			this.registrationFormGroup.get('password_confirmation')?.value
+		) {
+			return null;
+		}
+		return { mismatch: 'passwords do not match' };
+	}
 
 	public onRegistration(): void {
 		this.register.emit(this.registrationFormGroup.value);

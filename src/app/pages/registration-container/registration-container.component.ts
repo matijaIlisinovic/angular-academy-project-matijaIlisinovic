@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
-import { catchError } from 'rxjs/internal/operators';
+import { of, Subject } from 'rxjs';
+import { catchError, finalize } from 'rxjs/internal/operators';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { RegistrationData } from './registration-form/registration-form.component';
 
@@ -13,12 +13,17 @@ import { RegistrationData } from './registration-form/registration-form.componen
 })
 export class RegistrationContainerComponent {
 	constructor(private auth: AuthentificationService, private router: Router) {}
+	public isLoading$: Subject<boolean> = new Subject<boolean>();
 
 	public onRegistration(registrationData: RegistrationData): void {
+		this.isLoading$.next(true);
 		console.log(
 			this.auth
 				.register(registrationData)
 				.pipe(
+					finalize(() => {
+						this.isLoading$.next(false);
+					}),
 					catchError((e) => {
 						console.log(e);
 						return of('');
