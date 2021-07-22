@@ -1,8 +1,7 @@
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Observable, of, Subject } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { catchError, finalize } from 'rxjs/internal/operators';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LoginData } from './login-form/login-form.component';
