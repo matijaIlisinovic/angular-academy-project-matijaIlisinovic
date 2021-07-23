@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { of, Subject } from 'rxjs';
+import { of, Subject, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/internal/operators';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LoginData } from './login-form/login-form.component';
@@ -27,15 +27,13 @@ export class LoginContainerComponent {
 				catchError((e) => {
 					console.log(e);
 					this.snack.open('invalid password', 'ok');
-					this.router.navigate(['/login']);
-					return of('');
+					return throwError(e);
 				})
 			)
 			.subscribe((response) => {
 				console.log(response);
-				if (response) {
-					this.router.navigate(['']);
-				}
+
+				this.router.navigate(['']);
 			});
 	}
 }

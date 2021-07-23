@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import { of, Subject } from 'rxjs';
+import { of, Subject, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/internal/operators';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { RegistrationData } from './registration-form/registration-form.component';
@@ -26,7 +26,7 @@ export class RegistrationContainerComponent {
 					}),
 					catchError((e) => {
 						console.log(e);
-						return of('');
+						return throwError(e);
 					})
 				)
 				.subscribe((response) => {
