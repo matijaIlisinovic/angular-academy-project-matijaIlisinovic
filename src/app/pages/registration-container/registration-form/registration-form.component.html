@@ -4,11 +4,14 @@
 			<mat-label>email</mat-label>
 			<input matInput placeholder="ex. Jake" formControlName="email" />
 			<mat-icon matPrefix>person</mat-icon>
+			<mat-error *ngIf="registrationFormGroup.get('email')?.errors?.required">email is required</mat-error>
+			<mat-error *ngIf="registrationFormGroup.get('email')?.errors?.availability">email domain not accepted</mat-error>
 		</mat-form-field>
 		<mat-form-field appearance="outline">
 			<mat-label>Password</mat-label>
 			<input matInput placeholder="ex. *********" formControlName="password" type="password" />
 			<mat-icon matPrefix>lock</mat-icon>
+			<mat-error *ngIf="registrationFormGroup.get('password')?.errors?.required">password is required</mat-error>
 		</mat-form-field>
 		<mat-form-field appearance="outline">
 			<mat-label>Confirm password</mat-label>
