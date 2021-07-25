@@ -5,7 +5,7 @@ export class Show {
 		this.title = data.title;
 		this.description = data.description;
 		this.averageRating = data.average_rating;
-		this.imgUrl = data.imgUrl;
+		this.imgUrl = data.image_url;
 		this.id = data.id;
 	}
 
