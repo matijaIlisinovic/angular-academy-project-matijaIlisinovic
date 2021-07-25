@@ -5,12 +5,14 @@ import { catchError, tap } from 'rxjs/internal/operators';
 import { IAuthData } from '../interfaces/authData.interface';
 import { LoginData } from '../pages/login-container/login-form/login-form.component';
 import { RegistrationData } from '../pages/registration-container/registration-form/registration-form.component';
+import { StorageService } from './storage.service';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class AuthentificationService {
-	constructor(private http: HttpClient) {}
+	private readonly authDataKey = 'authData';
+	constructor(private http: HttpClient, private storage: StorageService) {}
 	public signIn(data: LoginData): Observable<any> {
 		return this.http
 			.post<LoginData>('https://tv-shows.infinum.academy/users/sign_in', data, { observe: 'response' })
@@ -21,6 +23,10 @@ export class AuthentificationService {
 					const client: string | null = response.headers.get('client');
 
 					console.log(uid, accessToken, client);
+
+					if (uid && accessToken && client) {
+						this.saveAuthData({ uid, accessToken, client });
+					}
 				})
 			);
 	}
@@ -34,9 +40,18 @@ export class AuthentificationService {
 					const client: string | null = response.headers.get('client');
 
 					console.log(uid, accessToken, client);
+
+					if (uid && accessToken && client) {
+						this.saveAuthData({ uid, accessToken, client });
+					}
 				})
 			);
 	}
 
-	private saveAuthData(authData: IAuthData): void {}
+	public getAuthData(): IAuthData | null {
+		return this.storage.get(this.authDataKey);
+	}
+	private saveAuthData(authData: IAuthData): void {
+		this.storage.add(this.authDataKey, authData);
+	}
 }
