@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { catchError, tap } from 'rxjs/internal/operators';
 import { IAuthData } from '../interfaces/authData.interface';
 import { LoginData } from '../pages/login-container/login-form/login-form.component';
@@ -12,6 +12,8 @@ import { StorageService } from './storage.service';
 })
 export class AuthentificationService {
 	private readonly authDataKey = 'authData';
+	public isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject(Boolean(this.getAuthData()));
+
 	constructor(private http: HttpClient, private storage: StorageService) {}
 	public signIn(data: LoginData): Observable<any> {
 		return this.http
@@ -22,10 +24,9 @@ export class AuthentificationService {
 					const accessToken: string | null = response.headers.get('access-token');
 					const client: string | null = response.headers.get('client');
 
-					console.log(uid, accessToken, client);
-
 					if (uid && accessToken && client) {
 						this.saveAuthData({ uid, accessToken, client });
+						this.isLoggedIn$.next(true);
 					}
 				})
 			);
@@ -39,10 +40,9 @@ export class AuthentificationService {
 					const accessToken: string | null = response.headers.get('access-token');
 					const client: string | null = response.headers.get('client');
 
-					console.log(uid, accessToken, client);
-
 					if (uid && accessToken && client) {
 						this.saveAuthData({ uid, accessToken, client });
+						this.isLoggedIn$.next(true);
 					}
 				})
 			);
