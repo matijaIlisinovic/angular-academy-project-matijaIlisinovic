@@ -32,6 +32,7 @@ import { ShowListComponent } from './components/show-list/show-list.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { TopRatedShowsContainerComponent } from './pages/top-rated-shows-container/top-rated-shows-container.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AuthErrorInterceptor } from './interceptors/auth-error.interceptor';
 
 @NgModule({
 	declarations: [
@@ -74,6 +75,11 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: AuthInterceptor,
+			multi: true,
+		},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthErrorInterceptor,
 			multi: true,
 		},
 	],
