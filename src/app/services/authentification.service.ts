@@ -51,6 +51,10 @@ export class AuthentificationService {
 	public getAuthData(): IAuthData | null {
 		return this.storage.get(this.authDataKey);
 	}
+	public logOut(): void {
+		this.storage.remove(this.authDataKey);
+		this.isLoggedIn$.next(false);
+	}
 	private saveAuthData(authData: IAuthData): void {
 		this.storage.add(this.authDataKey, authData);
 	}
