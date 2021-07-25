@@ -18,21 +18,21 @@ export class ShowService {
 				return response.shows.map((data: IShowData) => new Show(data));
 			})
 		);
-		/*
-		return of(this.shows).pipe(
-			map((a) => {
-				if (Math.random() < 0.1) {
-					throw 'Unable to load shows';
-				}
-				return a;
-			}),
-			delay(Math.random() * 1000 + 1000)
-		);*/
 	}
 	public getTopRated(): Observable<Array<Show>> {
-		return this.getShows().pipe(map((shows) => shows.filter((show: Show) => show.averageRating >= 4)));
+		return this.http.get<{ shows: Array<IShowData> }>('https://tv-shows.infinum.academy/shows/top_rated').pipe(
+			map((response) => {
+				console.log(response);
+				return response.shows.map((data: IShowData) => new Show(data));
+			})
+		);
 	}
 	public getShow(id: string): Observable<Show | null> {
-		return this.getShows().pipe(map((shows) => shows.find((show: Show) => show.id === id) || null));
+		return this.http.get<{ show: IShowData }>('https://tv-shows.infinum.academy/shows/' + id).pipe(
+			map((response) => {
+				console.log(response);
+				return new Show(response.show);
+			})
+		);
 	}
 }
