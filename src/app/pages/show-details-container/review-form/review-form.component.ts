@@ -17,6 +17,11 @@ export class ReviewFormComponent {
 		comment: ['', [Validators.required]],
 		rating: ['', [Validators.required, Validators.max(5), Validators.min(1)]],
 	});
+
+	public addRating(newRating: number) {
+		this.reviewFormGroup.get('rating')?.setValue(newRating);
+	}
+
 	public onSubmitReview(): void {
 		this.submitReview.emit({
 			comment: this.reviewFormGroup.get('comment')?.value,

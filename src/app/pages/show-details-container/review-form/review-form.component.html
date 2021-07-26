@@ -4,7 +4,8 @@
 			<mat-label>comment</mat-label>
 			<input matInput placeholder="ex. good show" formControlName="comment" type="text" />
 		</mat-form-field>
-		<mat-form-field appearance="fill" style="width: 20%">
+		<app-star-rating (newRatingEvent)="addRating($event)"></app-star-rating>
+		<mat-form-field appearance="fill" style="display: none">
 			<mat-label>Rating</mat-label>
 			<input matInput placeholder="3" formControlName="rating" type="number" step="1" onKeyDown="return false" />
 			<mat-error *ngIf="reviewFormGroup.get('rating')?.errors?.max">values 1-5</mat-error>

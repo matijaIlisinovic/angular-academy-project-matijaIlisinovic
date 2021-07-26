@@ -1,5 +1,4 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { getMatIconNoHttpProviderError } from '@angular/material/icon';
 
 @Component({
 	selector: 'app-rating',

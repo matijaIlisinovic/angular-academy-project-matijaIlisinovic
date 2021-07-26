@@ -35,6 +35,7 @@ import { TopRatedShowsContainerComponent } from './pages/top-rated-shows-contain
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthErrorInterceptor } from './interceptors/auth-error.interceptor';
 import { ReviewFormComponent } from './pages/show-details-container/review-form/review-form.component';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
 
 @NgModule({
 	declarations: [
@@ -57,6 +58,7 @@ import { ReviewFormComponent } from './pages/show-details-container/review-form/
 		SidenavComponent,
 		TopRatedShowsContainerComponent,
 		ReviewFormComponent,
+  StarRatingComponent,
 	],
 	imports: [
 		AppRoutingModule,
