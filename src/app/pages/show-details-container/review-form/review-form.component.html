@@ -1,0 +1,15 @@
+<mat-card>
+	<form [formGroup]="reviewFormGroup">
+		<mat-form-field appearance="fill">
+			<mat-label>comment</mat-label>
+			<input matInput placeholder="ex. good show" formControlName="comment" type="text" />
+		</mat-form-field>
+		<mat-form-field appearance="fill" style="width: 20%">
+			<mat-label>Rating</mat-label>
+			<input matInput placeholder="3" formControlName="rating" type="number" step="1" onKeyDown="return false" />
+			<mat-error *ngIf="reviewFormGroup.get('rating')?.errors?.max">values 1-5</mat-error>
+			<mat-error *ngIf="reviewFormGroup.get('rating')?.errors?.min">values 1-5</mat-error>
+		</mat-form-field>
+		<button mat-raised-button (click)="onSubmitReview()" [disabled]="reviewFormGroup.invalid">Submit</button>
+	</form>
+</mat-card>

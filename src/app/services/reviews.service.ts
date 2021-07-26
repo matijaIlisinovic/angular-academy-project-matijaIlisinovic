@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay, map } from 'rxjs/internal/operators';
 import { IReview } from '../interfaces/review.interface';
+import { IRawReview } from '../pages/show-details-container/show-details-container.component';
 import { Review } from './review.model';
 
 @Injectable({
@@ -18,5 +19,8 @@ export class ReviewsService {
 				return response.reviews.map((data: IReview) => new Review(data));
 			})
 		);
+	}
+	public onReviewAdd(reviewData: IRawReview): Observable<IRawReview> {
+		return this.http.post<IRawReview>('https://tv-shows.infinum.academy/reviews', reviewData);
 	}
 }

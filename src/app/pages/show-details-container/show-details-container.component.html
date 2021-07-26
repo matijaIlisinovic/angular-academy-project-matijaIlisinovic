@@ -2,9 +2,11 @@
 	<ng-container *ngIf="template.show as show">
 		<app-show-details [show]="show"></app-show-details>
 	</ng-container>
+
 	<ng-container *ngIf="template.reviews as reviews">
 		<app-review-list [reviews]="reviews"></app-review-list>
 	</ng-container>
+	<app-review-form (submitReview)="onSubmitReview($event)"></app-review-form>
 </ng-container>
 
 <ng-template #loading>
