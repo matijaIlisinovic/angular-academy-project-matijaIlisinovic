@@ -15,3 +15,12 @@ a {
 .active {
 	background-color: rgba(172, 255, 47, 0.061);
 }
+button {
+	background-color: rgb(235, 216, 215);
+	color: rgb(131, 131, 131);
+	transition: color 2s;
+	margin: 10px;
+}
+button:hover {
+	color: rgb(182, 73, 127);
+}

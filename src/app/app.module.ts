@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
@@ -33,6 +34,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { TopRatedShowsContainerComponent } from './pages/top-rated-shows-container/top-rated-shows-container.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthErrorInterceptor } from './interceptors/auth-error.interceptor';
+import { ReviewFormComponent } from './pages/show-details-container/review-form/review-form.component';
 
 @NgModule({
 	declarations: [
@@ -54,6 +56,7 @@ import { AuthErrorInterceptor } from './interceptors/auth-error.interceptor';
 		ShowListComponent,
 		SidenavComponent,
 		TopRatedShowsContainerComponent,
+		ReviewFormComponent,
 	],
 	imports: [
 		AppRoutingModule,
@@ -67,6 +70,7 @@ import { AuthErrorInterceptor } from './interceptors/auth-error.interceptor';
 		MatInputModule,
 		MatProgressBarModule,
 		MatProgressSpinnerModule,
+		MatSelectModule,
 		MatSidenavModule,
 		MatSnackBarModule,
 		ReactiveFormsModule,

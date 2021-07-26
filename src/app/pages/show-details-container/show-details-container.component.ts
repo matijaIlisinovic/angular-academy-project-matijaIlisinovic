@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable, of } from 'rxjs';
-import { catchError, map, retry, switchMap } from 'rxjs/internal/operators';
+import { catchError, finalize, map, retry, switchMap } from 'rxjs/internal/operators';
 import { IReview } from 'src/app/interfaces/review.interface';
 import { Review } from 'src/app/services/review.model';
 import { ReviewsService } from 'src/app/services/reviews.service';
@@ -67,6 +67,11 @@ export class ShowDetailsContainerComponent {
 					rating: reviewFormData.rating,
 					show_id: +this.id,
 				})
+				.pipe(
+					finalize(() => {
+						window.location.reload();
+					})
+				)
 				.subscribe();
 	}
 }

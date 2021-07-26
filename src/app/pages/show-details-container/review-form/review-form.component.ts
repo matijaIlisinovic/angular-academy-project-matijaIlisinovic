@@ -17,7 +17,7 @@ export class ReviewFormComponent {
 	@Output() submitReview: EventEmitter<ReviewFormData> = new EventEmitter();
 
 	public reviewFormGroup: FormGroup = this.fb.group({
-		comment: ['', []],
+		comment: ['', [Validators.required]],
 		rating: ['', [Validators.required, Validators.max(5), Validators.min(1)]],
 	});
 	public onSubmitReview(): void {
