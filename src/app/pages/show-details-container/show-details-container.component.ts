@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { combineLatest, Observable, of } from 'rxjs';
+import { combineLatest, merge, Observable, of, Subject, throwError } from 'rxjs';
 import { catchError, finalize, map, retry, switchMap } from 'rxjs/internal/operators';
 import { IReview } from 'src/app/interfaces/review.interface';
 import { Review } from 'src/app/services/review.model';
@@ -31,11 +31,18 @@ export class ShowDetailsContainerComponent {
 	constructor(private route: ActivatedRoute, private showService: ShowService, private reviewService: ReviewsService) {}
 	public errorDisplay: string = '';
 	private id: string | null = this.route.snapshot.paramMap.get('id');
+	private onReviewAdd$: Subject<void> = new Subject();
 
-	public templateData$: Observable<ITemplateData> = this.route.paramMap.pipe(
-		switchMap((paramMap) => {
-			const id: string | null = paramMap.get('id');
-			return combineLatest([this.fetchShowFn(id), this.reviewService.getReviews(id)]).pipe(
+	public templateData$: Observable<ITemplateData> = merge(this.route.paramMap, this.onReviewAdd$).pipe(
+		map(() => {
+			return this.route.snapshot.paramMap.get('id');
+		}),
+		switchMap((id: string | null) => {
+			if (!id) {
+				return throwError('no id');
+			}
+
+			return combineLatest([this.showService.getShow(id), this.reviewService.getReviews(id)]).pipe(
 				map(([show, reviews]) => {
 					return {
 						show,
@@ -52,13 +59,6 @@ export class ShowDetailsContainerComponent {
 		})
 	);
 
-	private fetchShowFn(id: string | null): Observable<Show | null> {
-		if (id) {
-			return this.showService.getShow(id);
-		} else {
-			return of(null);
-		}
-	}
 	public onSubmitReview(reviewFormData: ReviewFormData) {
 		if (this.id)
 			this.reviewService
@@ -67,11 +67,8 @@ export class ShowDetailsContainerComponent {
 					rating: reviewFormData.rating,
 					show_id: +this.id,
 				})
-				.pipe(
-					finalize(() => {
-						window.location.reload();
-					})
-				)
-				.subscribe();
+				.subscribe(() => {
+					this.onReviewAdd$.next();
+				});
 	}
 }
