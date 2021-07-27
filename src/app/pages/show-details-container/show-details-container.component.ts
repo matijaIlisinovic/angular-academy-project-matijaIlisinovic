@@ -30,7 +30,6 @@ export class ShowDetailsContainerComponent {
 	constructor(private route: ActivatedRoute, private showService: ShowService, private reviewService: ReviewsService) {}
 	public errorDisplay: string = '';
 	public rating: number;
-	public rReset: number;
 	private onReviewAdd$: Subject<void> = new Subject();
 
 	public templateData$: Observable<ITemplateData> = merge(this.route.paramMap, this.onReviewAdd$).pipe(
@@ -66,7 +65,6 @@ export class ShowDetailsContainerComponent {
 			.pipe(
 				finalize(() => {
 					this.rating = 0;
-					this.rReset = 0;
 				})
 			)
 			.subscribe(() => {
@@ -75,6 +73,5 @@ export class ShowDetailsContainerComponent {
 	}
 	public onAddRating(newRating: number) {
 		this.rating = newRating;
-		this.rReset = this.rating;
 	}
 }
