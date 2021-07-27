@@ -3,5 +3,5 @@ export interface IShowData {
 	id: string;
 	description: string;
 	average_rating: number;
-	imgUrl: string;
+	image_url: string;
 }

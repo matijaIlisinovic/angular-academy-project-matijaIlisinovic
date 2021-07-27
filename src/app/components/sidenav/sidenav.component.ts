@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 import { ILinkData } from 'src/app/interfaces/linkData.interface';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
 	selector: 'app-sidenav',
@@ -22,7 +24,11 @@ export class SidenavComponent implements OnInit {
 			title: 'My profile',
 		},
 	];
-	constructor() {}
+	constructor(private auth: AuthentificationService, private router: Router) {}
 
 	ngOnInit(): void {}
+	public logOut(): void {
+		this.auth.logOut();
+		this.router.navigate(['/login']);
+	}
 }

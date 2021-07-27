@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormLayoutComponent } from './components/form-layout/form-layout.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { LoginContainerComponent } from './pages/login-container/login-container.component';
 import { LoginFormComponent } from './pages/login-container/login-form/login-form.component';
@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
@@ -31,6 +32,10 @@ import { ShowDetailsContainerComponent } from './pages/show-details-container/sh
 import { ShowListComponent } from './components/show-list/show-list.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { TopRatedShowsContainerComponent } from './pages/top-rated-shows-container/top-rated-shows-container.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AuthErrorInterceptor } from './interceptors/auth-error.interceptor';
+import { ReviewFormComponent } from './pages/show-details-container/review-form/review-form.component';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
 
 @NgModule({
 	declarations: [
@@ -52,6 +57,8 @@ import { TopRatedShowsContainerComponent } from './pages/top-rated-shows-contain
 		ShowListComponent,
 		SidenavComponent,
 		TopRatedShowsContainerComponent,
+		ReviewFormComponent,
+  StarRatingComponent,
 	],
 	imports: [
 		AppRoutingModule,
@@ -65,11 +72,23 @@ import { TopRatedShowsContainerComponent } from './pages/top-rated-shows-contain
 		MatInputModule,
 		MatProgressBarModule,
 		MatProgressSpinnerModule,
+		MatSelectModule,
 		MatSidenavModule,
 		MatSnackBarModule,
 		ReactiveFormsModule,
 	],
-	providers: [],
+	providers: [
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthInterceptor,
+			multi: true,
+		},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthErrorInterceptor,
+			multi: true,
+		},
+	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

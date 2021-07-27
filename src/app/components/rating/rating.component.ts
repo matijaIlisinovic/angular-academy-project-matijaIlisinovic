@@ -1,5 +1,4 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { getMatIconNoHttpProviderError } from '@angular/material/icon';
 
 @Component({
 	selector: 'app-rating',
@@ -12,8 +11,14 @@ export class RatingComponent {
 
 	public starFunction(): string {
 		let starString = '';
+		let j = 5;
 		for (let i = 0; i < this.averageRating - 0.5; i++) {
 			starString = starString.concat(' star');
+			j--;
+		}
+		while (j > 0) {
+			starString = starString.concat(' star_outline');
+			j--;
 		}
 		return starString;
 	}

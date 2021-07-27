@@ -7,6 +7,7 @@ import { ShowDetailsContainerComponent } from './pages/show-details-container/sh
 import { FormLayoutComponent } from './components/form-layout/form-layout.component';
 import { LoginContainerComponent } from './pages/login-container/login-container.component';
 import { RegistrationContainerComponent } from './pages/registration-container/registration-container.component';
+import { AppGuard } from './app.guard';
 
 const routes: Routes = [
 	{
@@ -26,6 +27,7 @@ const routes: Routes = [
 				component: ShowDetailsContainerComponent,
 			},
 		],
+		canActivate: [AppGuard],
 	},
 	{
 		path: '',
