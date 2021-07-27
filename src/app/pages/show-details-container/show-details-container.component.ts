@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, merge, Observable, of, Subject, throwError } from 'rxjs';
-import { catchError, map, retry, switchMap } from 'rxjs/internal/operators';
+import { catchError, finalize, map, retry, switchMap } from 'rxjs/internal/operators';
 import { Review } from 'src/app/services/review.model';
 import { ReviewsService } from 'src/app/services/reviews.service';
 import { Show } from 'src/app/services/show.model';
@@ -29,6 +29,8 @@ export class ShowDetailsContainerComponent {
 	public isVisible: string = 'block';
 	constructor(private route: ActivatedRoute, private showService: ShowService, private reviewService: ReviewsService) {}
 	public errorDisplay: string = '';
+	public rating: number;
+	public rReset: number;
 	private onReviewAdd$: Subject<void> = new Subject();
 
 	public templateData$: Observable<ITemplateData> = merge(this.route.paramMap, this.onReviewAdd$).pipe(
@@ -59,8 +61,20 @@ export class ShowDetailsContainerComponent {
 	);
 
 	public onSubmitReview(reviewData: IRawReview) {
-		this.reviewService.onReviewAdd(reviewData).subscribe(() => {
-			this.onReviewAdd$.next();
-		});
+		this.reviewService
+			.onReviewAdd(reviewData)
+			.pipe(
+				finalize(() => {
+					this.rating = 0;
+					this.rReset = 0;
+				})
+			)
+			.subscribe(() => {
+				this.onReviewAdd$.next();
+			});
+	}
+	public onAddRating(newRating: number) {
+		this.rating = newRating;
+		this.rReset = this.rating;
 	}
 }

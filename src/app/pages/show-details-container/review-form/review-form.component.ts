@@ -1,4 +1,12 @@
-import { Component, ChangeDetectionStrategy, EventEmitter, Output, Input } from '@angular/core';
+import {
+	Component,
+	ChangeDetectionStrategy,
+	EventEmitter,
+	Output,
+	Input,
+	OnChanges,
+	SimpleChanges,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IRawReview } from '../show-details-container.component';
 
@@ -8,19 +16,20 @@ import { IRawReview } from '../show-details-container.component';
 	styleUrls: ['./review-form.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReviewFormComponent {
+export class ReviewFormComponent implements OnChanges {
 	constructor(private fb: FormBuilder) {}
 	@Output() submitReview: EventEmitter<IRawReview> = new EventEmitter();
 	@Input() showId: string;
+	@Input() rating: number;
+
+	ngOnChanges(): void {
+		this.reviewFormGroup.get('rating')?.setValue(this.rating);
+	}
 
 	public reviewFormGroup: FormGroup = this.fb.group({
 		comment: ['', [Validators.required]],
 		rating: ['', [Validators.required, Validators.max(5), Validators.min(1)]],
 	});
-
-	public addRating(newRating: number) {
-		this.reviewFormGroup.get('rating')?.setValue(newRating);
-	}
 
 	public onSubmitReview(): void {
 		this.submitReview.emit({

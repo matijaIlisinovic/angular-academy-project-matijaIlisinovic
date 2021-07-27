@@ -6,7 +6,8 @@
 	<ng-container *ngIf="template.reviews as reviews">
 		<app-review-list [reviews]="reviews"></app-review-list>
 	</ng-container>
-	<app-review-form (submitReview)="onSubmitReview($event)" [showId]="template.id"></app-review-form>
+	<app-star-rating (newRatingEvent)="onAddRating($event)" [rating]="rating"></app-star-rating>
+	<app-review-form (submitReview)="onSubmitReview($event)" [showId]="template.id" [rating]="rating"> </app-review-form>
 </ng-container>
 
 <ng-template #loading>

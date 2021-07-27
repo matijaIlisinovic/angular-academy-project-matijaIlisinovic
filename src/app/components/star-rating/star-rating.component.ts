@@ -1,4 +1,12 @@
-import { Component, ChangeDetectionStrategy, Output, EventEmitter, Input } from '@angular/core';
+import {
+	Component,
+	ChangeDetectionStrategy,
+	Output,
+	EventEmitter,
+	Input,
+	OnChanges,
+	SimpleChanges,
+} from '@angular/core';
 
 @Component({
 	selector: 'app-star-rating',
@@ -6,12 +14,12 @@ import { Component, ChangeDetectionStrategy, Output, EventEmitter, Input } from 
 	styleUrls: ['./star-rating.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StarRatingComponent {
+export class StarRatingComponent implements OnChanges {
 	constructor() {}
-
+	ngOnChanges(): void {}
+	@Input() rating = 0;
 	@Output() newRatingEvent = new EventEmitter<number>();
 
-	public rating = 0;
 	private starCount = 5;
 	public ratingArray: boolean[] = Array(this.starCount).fill(false);
 
@@ -25,8 +33,5 @@ export class StarRatingComponent {
 	public onClick(i: number) {
 		this.rating = i + 1;
 		this.newRatingEvent.emit(this.rating);
-	}
-	public resetStars() {
-		this.rating = 0;
 	}
 }
