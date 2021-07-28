@@ -1,3 +1,4 @@
+@use 'utils/colors';
 :host {
 	display: block;
 	width: 100%;
@@ -5,6 +6,7 @@
 }
 .show-card {
 	padding: 0;
+	background-color: colors.$white;
 	border-radius: 24px;
 	overflow: hidden;
 	height: 100%;
@@ -16,6 +18,7 @@
 }
 .info {
 	padding: 10px 15px 5px;
+	color: colors.$purple;
 	:first-child {
 		margin: 0;
 		padding: 0;
