@@ -1,0 +1,39 @@
+@use 'utils/colors';
+.review {
+	background-color: colors.$purple;
+	margin: 24px;
+	padding: 20px;
+	border-radius: 24px;
+	position: relative;
+	.image-div {
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		border-radius: 20px;
+		img {
+			width: 100%;
+		}
+	}
+	.data {
+		display: inline-block;
+		margin-left: 20px;
+		width: 200px;
+	}
+	.comment {
+		display: inline-block;
+		position: absolute;
+		left: 50%;
+	}
+}
+@media (max-width: 900px) {
+	.review {
+		width: 100%;
+		margin: 24px 0;
+		.comment {
+			position: relative;
+			left: 24px;
+			width: 100%;
+			text-align: left;
+		}
+	}
+}

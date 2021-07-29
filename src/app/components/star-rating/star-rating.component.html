@@ -1,7 +1,8 @@
-<mat-card>
+<div>
+	<h4 class="title">Rating</h4>
 	<button mat-icon-button *ngFor="let r of ratingArray; index as i" (click)="onClick(i)">
 		<mat-icon>
 			{{ returnStar(i) }}
 		</mat-icon>
 	</button>
-</mat-card>
+</div>

@@ -1,8 +1,9 @@
+@use 'utils/colors';
+.review-form-card,
+form {
+	background-color: none;
+}
 form {
 	display: flex;
 	flex-direction: column;
-}
-mat-card {
-	margin: auto;
-	width: 70%;
 }

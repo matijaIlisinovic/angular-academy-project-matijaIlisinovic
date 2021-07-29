@@ -1,5 +1,9 @@
-<div>
-	<img *ngIf="review.user.image_url" src="review.user.img_url" alt="" />
-	<p>{{ review.comment }}</p>
-	<app-rating [averageRating]="review.rating"></app-rating>
+<div class="review">
+	<div class="image-div"><img *ngIf="review.user.image_url" src="review.user.img_url" alt="" /></div>
+	<div class="data">
+		<h4>{{ review.user.email }}</h4>
+		<app-rating [averageRating]="review.rating"></app-rating>
+	</div>
+
+	<p class="comment">{{ review.comment }}</p>
 </div>
