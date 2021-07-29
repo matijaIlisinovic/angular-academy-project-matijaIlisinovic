@@ -24,6 +24,12 @@
 		position: absolute;
 		left: 50%;
 	}
+	button {
+		position: absolute;
+		right: 5px;
+		bottom: 5px;
+		border-radius: 20px;
+	}
 }
 @media (max-width: 900px) {
 	.review {
