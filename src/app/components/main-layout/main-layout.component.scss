@@ -1,7 +1,28 @@
 .side {
-	width: 340px;
+	padding: 30px;
 }
 .content {
-	height: 100%;
-	padding: 30px;
+	padding: 32px;
+}
+
+.header {
+	margin-bottom: 32px;
+	display: flex;
+	justify-content: space-between;
+}
+@media (max-width: 600px) {
+	.side {
+		position: absolute;
+		top: 24px;
+		left: 36px;
+		padding: 25px;
+		border-radius: 30px;
+		height: 100%;
+		button {
+			margin-left: 85%;
+		}
+	}
+	.content {
+		padding: 16px;
+	}
 }
