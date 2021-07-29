@@ -1,0 +1,31 @@
+@use 'utils/colors';
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	padding: 100px 0;
+}
+.picture-dropzone {
+	width: 600px;
+	height: 400px;
+	border-radius: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: colors.$purple;
+	.image-container {
+		width: 150px;
+		margin: auto;
+		color: colors.$light-purple;
+		text-align: center;
+		font-weight: lighter;
+	}
+}
+@media (max-width: 900px) {
+	.picture-dropzone {
+		width: 271px;
+		height: 271px;
+	}
+}

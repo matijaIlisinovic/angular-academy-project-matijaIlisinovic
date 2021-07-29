@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@use 'utils/colors';
 *,
 *:before,
 *:after {
@@ -12,6 +12,7 @@ html {
 	padding: 0;
 	height: 100%;
 	width: 100%;
+	background-color: colors.$dark-purple;
 }
 html,
 body {
