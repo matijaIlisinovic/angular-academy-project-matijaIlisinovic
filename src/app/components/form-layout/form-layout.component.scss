@@ -1,7 +1,13 @@
+@use 'utils/colors';
 :host {
+	background-color: colors.$dark-purple;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	background: linear-gradient(rgb(45, 104, 45), rgb(9, 49, 16));
+}
+@media (max-width: 600px) {
+	:host {
+		display: block;
+	}
 }

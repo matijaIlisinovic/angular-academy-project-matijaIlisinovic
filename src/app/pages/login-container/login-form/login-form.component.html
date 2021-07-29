@@ -1,22 +1,31 @@
-<mat-card>
-	<form [formGroup]="loginFormGroup">
-		<mat-form-field appearance="outline">
+<mat-card class="login-form-container">
+	<app-logo class="logo"></app-logo>
+	<form class="login-form" [formGroup]="loginFormGroup">
+		<mat-form-field class="field" appearance="outline">
 			<mat-label>email</mat-label>
 			<input matInput placeholder="ex. Jake" formControlName="email" />
 			<mat-icon matPrefix>person</mat-icon>
 			<mat-error *ngIf="loginFormGroup.get('email')?.errors?.required">email is required</mat-error>
 			<mat-error *ngIf="loginFormGroup.get('email')?.errors?.availability">email domain not accepted</mat-error>
 		</mat-form-field>
-		<mat-form-field appearance="outline">
+		<mat-form-field class="field" appearance="outline">
 			<mat-label>Password</mat-label>
 			<input matInput placeholder="8 characters min" formControlName="password" type="password" />
 			<mat-icon matPrefix>lock</mat-icon>
 			<mat-error *ngIf="loginFormGroup.get('password')?.errors?.required">password is required</mat-error>
 		</mat-form-field>
-		<button mat-raised-button (click)="onLogin()" [disabled]="loginFormGroup.invalid">Log in</button>
+		<button
+			class="login-button"
+			mat-raised-button
+			(click)="onLogin()"
+			color="primary"
+			[disabled]="loginFormGroup.invalid"
+		>
+			Log in
+		</button>
 	</form>
 	<p>
 		Don't have an account?
-		<a routerLink="/registration">Register</a>
+		<b><a class="registration-link" routerLink="/registration">Register</a></b>
 	</p>
 </mat-card>
