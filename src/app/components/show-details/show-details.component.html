@@ -1,6 +1,8 @@
-<mat-card>
-	<img [src]="show.imgUrl" alt="a" />
-	<p>{{ show.description }}</p>
-	<h3>{{ show.title }}</h3>
-	<app-rating [averageRating]="show.averageRating"></app-rating>
+<mat-card class="details-card">
+	<img class="image" [src]="show.imgUrl" alt="a" />
+	<div class="info">
+		<h3>{{ show.title }}</h3>
+		<app-rating [averageRating]="show.averageRating"></app-rating>
+	</div>
+	<p class="description">{{ show.description }}</p>
 </mat-card>

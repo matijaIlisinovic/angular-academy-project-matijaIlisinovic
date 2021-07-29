@@ -1,4 +1,5 @@
 <div>
+	<img *ngIf="review.user.image_url" src="review.user.img_url" alt="" />
 	<p>{{ review.comment }}</p>
 	<app-rating [averageRating]="review.rating"></app-rating>
 </div>
