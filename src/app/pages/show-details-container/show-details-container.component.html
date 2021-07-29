@@ -9,7 +9,6 @@
 	<div class="reviews">
 		<div class="new-review">
 			<app-review-form (submitReview)="onSubmitReview($event)" [rating]="rating"> </app-review-form>
-			<app-star-rating (newRatingEvent)="onAddRating($event)" [rating]="rating"></app-star-rating>
 		</div>
 		<ng-container *ngIf="template.reviews as reviews">
 			<app-review-list class="review-list" [reviews]="reviews"></app-review-list>

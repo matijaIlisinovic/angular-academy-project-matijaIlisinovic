@@ -36,4 +36,7 @@ export class ReviewFormComponent implements OnChanges {
 			this.reviewFormGroup.reset();
 		}
 	}
+	public onAddRating(newRating: number) {
+		this.reviewFormGroup.get('rating')?.setValue(newRating);
+	}
 }
