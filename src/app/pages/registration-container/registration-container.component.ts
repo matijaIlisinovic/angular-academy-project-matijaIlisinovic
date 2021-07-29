@@ -31,6 +31,7 @@ export class RegistrationContainerComponent {
 				)
 				.subscribe((response) => {
 					console.log(response);
+					this.auth.setEmail(response.body.user.email);
 					this.router.navigate(['']);
 				})
 		);

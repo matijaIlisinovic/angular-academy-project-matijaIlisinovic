@@ -12,6 +12,7 @@ import { StorageService } from './storage.service';
 })
 export class AuthentificationService {
 	private readonly authDataKey = 'authData';
+	private email: string;
 	private _isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject(Boolean(this.getAuthData()));
 	public isLoggedIn$: Observable<boolean> = this._isLoggedIn$.asObservable();
 
@@ -58,5 +59,15 @@ export class AuthentificationService {
 	}
 	private saveAuthData(authData: IAuthData): void {
 		this.storage.add(this.authDataKey, authData);
+	}
+
+	public getEmail(): string {
+		return this.email;
+	}
+	public setEmail(newEmail: string): void {
+		this.email = newEmail;
+	}
+	public removeEmail(): void {
+		this.email = '';
 	}
 }
