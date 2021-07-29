@@ -1,8 +1,13 @@
 @use 'utils/colors';
 :host {
-	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 .list {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
 	list-style: none;
 	padding: 31px;
 	.list-item {
@@ -20,12 +25,5 @@
 	}
 }
 .log-out-button {
-	position: fixed;
-	bottom: 56px;
-	left: 47px;
-}
-@media (max-width: 768px) {
-	.log-out-button {
-		left: 64px;
-	}
+	margin-top: 200px;
 }

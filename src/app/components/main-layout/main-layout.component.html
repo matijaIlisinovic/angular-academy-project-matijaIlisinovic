@@ -7,9 +7,11 @@
 			[opened]="!layout.isSmall"
 			#drawer
 		>
-			<app-logo *ngIf="!layout.isSmall"></app-logo>
-			<button *ngIf="layout.isSmall" mat-icon-button (click)="drawer.close()"><mat-icon>close</mat-icon></button>
-			<app-sidenav></app-sidenav>
+			<div class="side-container">
+				<app-logo *ngIf="!layout.isSmall"></app-logo>
+				<button *ngIf="layout.isSmall" mat-icon-button (click)="drawer.close()"><mat-icon>close</mat-icon></button>
+				<app-sidenav></app-sidenav>
+			</div>
 		</mat-sidenav>
 		<mat-sidenav-content class="content">
 			<header *ngIf="layout.isSmall" class="header">
