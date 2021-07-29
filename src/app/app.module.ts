@@ -36,6 +36,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthErrorInterceptor } from './interceptors/auth-error.interceptor';
 import { ReviewFormComponent } from './pages/show-details-container/review-form/review-form.component';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
 	declarations: [
@@ -59,6 +60,7 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
 		TopRatedShowsContainerComponent,
 		ReviewFormComponent,
   StarRatingComponent,
+  LogoComponent,
 	],
 	imports: [
 		AppRoutingModule,
