@@ -1,23 +1,31 @@
-img {
-	width: 300px;
-	float: left;
-	margin-bottom: 20px;
+@use 'utils/colors';
+
+.details-card {
+	padding: 0;
+	border-radius: 24px;
+	overflow: hidden;
+	background-color: colors.$white;
+	.image {
+		height: 439px;
+		width: 100%;
+		object-fit: cover;
+	}
+	.info,
+	.description {
+		margin: 40px 0 40px 40px;
+		width: 40%;
+		float: left;
+		color: colors.$purple;
+	}
 }
-p {
-	width: 50%;
-	float: right;
-	margin: 15px;
-	margin-top: 40px;
-}
-h3 {
-	clear: left;
-	margin: 20px;
-}
-app-rating {
-	float: left;
-}
-mat-card {
-	float: left;
-	border-radius: 20px;
-	margin: 20px;
+@media (max-width: 900px) {
+	.details-card {
+		padding-bottom: 24px;
+		.info,
+		.description {
+			margin: 24px 24px 0;
+			width: 80%;
+			clear: both;
+		}
+	}
 }

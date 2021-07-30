@@ -1,8 +1,34 @@
-mat-sidenav {
-	width: 20%;
-	background: linear-gradient(rgb(24, 87, 57), rgb(11, 32, 23));
-}
-mat-sidenav-container {
+.side-container {
+	display: flex;
+	flex-direction: column;
 	height: 100%;
-	background-image: url('https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/Desktop.png');
+}
+.side {
+	padding: 30px;
+	min-width: 260px;
+}
+.content {
+	padding: 32px;
+}
+
+.header {
+	margin-bottom: 32px;
+	display: flex;
+	justify-content: space-between;
+}
+@media (max-width: 600px) {
+	.side {
+		position: absolute;
+		top: 24px;
+		left: 36px;
+		padding: 25px;
+		border-radius: 30px 0 0 0;
+		height: 100%;
+		button {
+			margin-left: 85%;
+		}
+	}
+	.content {
+		padding: 16px;
+	}
 }

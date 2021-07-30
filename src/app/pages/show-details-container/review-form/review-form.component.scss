@@ -1,8 +1,26 @@
-form {
-	display: flex;
-	flex-direction: column;
+@use 'utils/colors';
+.review-form-card {
+	position: relative;
 }
-mat-card {
-	margin: auto;
-	width: 70%;
+.comment-input {
+	height: 80px;
+	width: 100%;
+	border-radius: 24px;
+	padding: 40px 28px;
+	color: colors.$light-purple;
+}
+.star-component {
+	display: block;
+	flex: 1;
+}
+.button {
+	background-color: colors.$white;
+	border-radius: 24px;
+	height: 50px;
+	color: colors.$light-purple;
+	min-width: 100px;
+}
+.new-review-components {
+	display: flex;
+	padding: 24px;
 }

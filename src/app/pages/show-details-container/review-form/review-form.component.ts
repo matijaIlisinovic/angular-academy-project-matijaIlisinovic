@@ -1,13 +1,6 @@
-import {
-	Component,
-	ChangeDetectionStrategy,
-	EventEmitter,
-	Output,
-	Input,
-	OnChanges,
-	SimpleChanges,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, EventEmitter, Output, Input, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { IRawReview } from '../show-details-container.component';
 
 @Component({
@@ -17,10 +10,12 @@ import { IRawReview } from '../show-details-container.component';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReviewFormComponent implements OnChanges {
-	constructor(private fb: FormBuilder) {}
+	constructor(private fb: FormBuilder, private route: ActivatedRoute) {}
 	@Output() submitReview: EventEmitter<IRawReview> = new EventEmitter();
-	@Input() showId: string;
+
 	@Input() rating: number;
+
+	public showId: string | null = this.route.snapshot.paramMap.get('id');
 
 	ngOnChanges(): void {
 		this.reviewFormGroup.get('rating')?.setValue(this.rating);
@@ -32,11 +27,16 @@ export class ReviewFormComponent implements OnChanges {
 	});
 
 	public onSubmitReview(): void {
-		this.submitReview.emit({
-			comment: this.reviewFormGroup.get('comment')?.value,
-			rating: this.reviewFormGroup.get('rating')?.value,
-			show_id: this.showId,
-		});
-		this.reviewFormGroup.reset();
+		if (this.showId) {
+			this.submitReview.emit({
+				comment: this.reviewFormGroup.get('comment')?.value,
+				rating: this.reviewFormGroup.get('rating')?.value,
+				show_id: this.showId,
+			});
+			this.reviewFormGroup.reset();
+		}
+	}
+	public onAddRating(newRating: number) {
+		this.reviewFormGroup.get('rating')?.setValue(newRating);
 	}
 }

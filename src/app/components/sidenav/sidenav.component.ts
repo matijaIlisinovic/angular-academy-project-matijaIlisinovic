@@ -29,6 +29,7 @@ export class SidenavComponent implements OnInit {
 	ngOnInit(): void {}
 	public logOut(): void {
 		this.auth.logOut();
+		this.auth.removeEmail();
 		this.router.navigate(['/login']);
 	}
 }

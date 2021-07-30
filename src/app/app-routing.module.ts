@@ -8,6 +8,7 @@ import { FormLayoutComponent } from './components/form-layout/form-layout.compon
 import { LoginContainerComponent } from './pages/login-container/login-container.component';
 import { RegistrationContainerComponent } from './pages/registration-container/registration-container.component';
 import { AppGuard } from './app.guard';
+import { ProfileContainerComponent } from './pages/profile-container/profile-container.component';
 
 const routes: Routes = [
 	{
@@ -25,6 +26,10 @@ const routes: Routes = [
 			{
 				path: 'show/:id',
 				component: ShowDetailsContainerComponent,
+			},
+			{
+				path: 'my-profile',
+				component: ProfileContainerComponent,
 			},
 		],
 		canActivate: [AppGuard],

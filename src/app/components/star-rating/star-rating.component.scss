@@ -1,5 +1,10 @@
+@use 'utils/colors';
 :host {
+	display: block;
+}
+.title {
 	display: inline-block;
-	width: auto;
-	margin: 10px 30%;
+}
+.icon {
+	color: colors.$light-purple;
 }

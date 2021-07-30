@@ -59,4 +59,14 @@ export class AuthentificationService {
 	private saveAuthData(authData: IAuthData): void {
 		this.storage.add(this.authDataKey, authData);
 	}
+
+	public getEmail(): string {
+		return this.storage.get('email');
+	}
+	public setEmail(newEmail: string): void {
+		this.storage.add('email', newEmail);
+	}
+	public removeEmail(): void {
+		this.storage.remove('email');
+	}
 }

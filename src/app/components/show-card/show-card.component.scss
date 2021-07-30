@@ -1,18 +1,35 @@
-mat-card {
-	margin: 20px 5px 5px 5px;
-	padding: 0;
-	display: inline-block;
-	overflow: hidden;
-	border-radius: 24px;
-	width: 300px;
-	height: 450px;
+@use 'utils/colors';
+:host {
+	display: block;
+	width: 100%;
+	height: 100%;
 }
-img {
-	width: 300px;
-	height: 240px;
+.show-card {
+	padding: 0;
+	background-color: colors.$white;
+	border-radius: 24px;
+	overflow: hidden;
+	height: 100%;
+}
+.image {
+	width: 100%;
+	height: 300px;
 	object-fit: cover;
 }
-p,
-h3 {
-	padding: 0 10px 10px 10px;
+.info {
+	padding: 10px 15px 5px;
+	color: colors.$purple;
+	:first-child {
+		margin: 0;
+		padding: 0;
+	}
+}
+@media (max-width: 768px) {
+	.info {
+		display: flex;
+		justify-content: space-between;
+	}
+	.image {
+		height: 428px;
+	}
 }

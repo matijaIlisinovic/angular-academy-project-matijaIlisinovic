@@ -23,4 +23,7 @@ export class ReviewsService {
 	public onReviewAdd(reviewData: IRawReview): Observable<IRawReview> {
 		return this.http.post<IRawReview>('https://tv-shows.infinum.academy/reviews', reviewData);
 	}
+	public deleteReview(id: string): Observable<Review> {
+		return this.http.delete<Review>('https://tv-shows.infinum.academy/reviews/' + id);
+	}
 }

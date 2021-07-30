@@ -1,0 +1,27 @@
+.show {
+	margin-bottom: 94px;
+}
+.review-title {
+	margin-top: 94px;
+	width: 10%;
+	height: 100%;
+	float: left;
+}
+.new-review {
+	width: 100%;
+}
+.reviews {
+	margin-top: 94px;
+	width: 85%;
+	display: inline-block;
+}
+@media (max-width: 900px) {
+	.review-title {
+		width: 100%;
+		height: 20px;
+	}
+	.reviews {
+		margin-top: 0;
+		width: 100%;
+	}
+}

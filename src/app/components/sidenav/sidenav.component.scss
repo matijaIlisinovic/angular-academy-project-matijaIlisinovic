@@ -1,26 +1,29 @@
-ul {
+@use 'utils/colors';
+:host {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.list {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
 	list-style: none;
+	padding: 31px;
+	.list-item {
+		margin-bottom: 20px;
+
+		.link {
+			text-decoration: none;
+			color: colors.$white;
+			padding: 8px 12px;
+			border-radius: 30px;
+			&.active {
+				background-color: colors.$purple;
+			}
+		}
+	}
 }
-li {
-	margin: 20px auto;
-	width: 60%;
-}
-a {
-	text-decoration: none;
-	color: rgb(182, 73, 127);
-	text-shadow: 1px 1px 1px rgb(131, 131, 91);
-	padding: 10px 20px;
-	border-radius: 10px;
-}
-.active {
-	background-color: rgba(172, 255, 47, 0.061);
-}
-button {
-	background-color: rgb(235, 216, 215);
-	color: rgb(131, 131, 131);
-	transition: color 2s;
-	margin: 10px;
-}
-button:hover {
-	color: rgb(182, 73, 127);
+.log-out-button {
+	margin-top: 200px;
 }

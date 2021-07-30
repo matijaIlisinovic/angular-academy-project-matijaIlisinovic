@@ -36,6 +36,9 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthErrorInterceptor } from './interceptors/auth-error.interceptor';
 import { ReviewFormComponent } from './pages/show-details-container/review-form/review-form.component';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { LogoComponent } from './components/logo/logo.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { ProfileContainerComponent } from './pages/profile-container/profile-container.component';
 
 @NgModule({
 	declarations: [
@@ -58,7 +61,9 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
 		SidenavComponent,
 		TopRatedShowsContainerComponent,
 		ReviewFormComponent,
-  StarRatingComponent,
+		StarRatingComponent,
+		LogoComponent,
+  ProfileContainerComponent,
 	],
 	imports: [
 		AppRoutingModule,
@@ -76,6 +81,7 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
 		MatSidenavModule,
 		MatSnackBarModule,
 		ReactiveFormsModule,
+		LayoutModule,
 	],
 	providers: [
 		{
