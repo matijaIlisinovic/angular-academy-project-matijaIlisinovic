@@ -16,17 +16,29 @@
 	justify-content: center;
 	background-color: colors.$purple;
 	border: colors.$light-purple dashed;
+	cursor: pointer;
 	.image-container {
-		width: 150px;
+		width: 200px;
+		max-height: 100%;
+		height: 250px;
 		margin: auto;
 		color: colors.$light-purple;
 		text-align: center;
 		font-weight: lighter;
 	}
 }
+.image-container > img {
+	width: 100%;
+	max-height: 100%;
+	object-fit: cover;
+	border-radius: 20px;
+}
+.file-input {
+	visibility: hidden;
+}
 @media (max-width: 900px) {
 	.picture-dropzone {
 		width: 271px;
-		height: 271px;
+		height: 300px;
 	}
 }

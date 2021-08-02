@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/internal/operators';
 import { IAuthData } from '../interfaces/authData.interface';
+import { IUserData } from '../interfaces/userData.interface';
 import { LoginData } from '../pages/login-container/login-form/login-form.component';
 import { RegistrationData } from '../pages/registration-container/registration-form/registration-form.component';
 import { StorageService } from './storage.service';
@@ -47,6 +48,12 @@ export class AuthentificationService {
 					}
 				})
 			);
+	}
+	public updateUser(data: any): Observable<any> {
+		return this.http.put<any>('https://tv-shows.infinum.academy/users', data, { observe: 'response' });
+	}
+	public getUser(): Observable<any> {
+		return this.http.get<any>('https://tv-shows.infinum.academy/users/me');
 	}
 
 	public getAuthData(): IAuthData | null {

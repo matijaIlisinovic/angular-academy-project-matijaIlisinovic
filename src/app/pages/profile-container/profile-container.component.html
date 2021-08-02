@@ -1,13 +1,21 @@
 <div class="container">
 	<h4>EMAIL</h4>
 	<p>{{ email }}</p>
-	<div class="picture-dropzone">
-		<div class="image-container">
-			<img src="assets/images/empty_profile.png" alt="placeholder" />
-			<h3>
-				Drop your<br />
-				photo here
-			</h3>
+	<form>
+		<input type="file" class="file-input" accept="images" (change)="onFileSelected($event)" #fileUpload />
+	</form>
+	<div class="picture-dropzone" (click)="fileUpload.click()" (drop)="(fileUpload.onchange)">
+		<div class="image-container" id="image-container">
+			<ng-container *ngIf="imgUrl$ | async as imgUrl; else default">
+				<img [src]="imgUrl" />
+			</ng-container>
 		</div>
 	</div>
 </div>
+<ng-template #default>
+	<img src="assets/images/empty_profile.png" alt="placeholder" />
+	<h3>
+		Click here<br />
+		to upload your photo
+	</h3>
+</ng-template>
