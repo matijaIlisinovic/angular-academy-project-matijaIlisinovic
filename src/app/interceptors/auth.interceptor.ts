@@ -21,9 +21,6 @@ export class AuthInterceptor implements HttpInterceptor {
 			});
 		}
 
-		console.log(request.headers.get('access-token'));
-		console.log(finalRequest.headers.get('access-token'));
-
 		return next.handle(finalRequest);
 	}
 }

@@ -43,7 +43,6 @@ export class ShowDetailsContainerComponent {
 
 			return combineLatest([this.showService.getShow(id), this.reviewService.getReviews(id)]).pipe(
 				map(([show, reviews]) => {
-					console.log(reviews);
 					return {
 						show,
 						reviews,

@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError, map, retry } from 'rxjs/internal/operators';
+import { catchError, retry } from 'rxjs/internal/operators';
 import { Show } from 'src/app/services/show.model';
 import { ShowService } from 'src/app/services/show.service';
 

@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { finalize } from 'rxjs/internal/operators';
-import { IReview } from 'src/app/interfaces/review.interface';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { Review } from 'src/app/services/review.model';
 import { ReviewsService } from 'src/app/services/reviews.service';

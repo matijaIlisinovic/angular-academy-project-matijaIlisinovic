@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import { of, Subject, throwError } from 'rxjs';
+import { Subject, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/internal/operators';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { RegistrationData } from './registration-form/registration-form.component';
@@ -25,12 +25,10 @@ export class RegistrationContainerComponent {
 						this.isLoading$.next(false);
 					}),
 					catchError((e) => {
-						console.log(e);
 						return throwError(e);
 					})
 				)
 				.subscribe((response) => {
-					console.log(response);
 					this.auth.setEmail(response.body.user.email);
 					this.router.navigate(['']);
 				})
